@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2 th:text="${salesTitle}"></h2>
+<p th:text="${message}"></p>
+
+<form action="#" th:action="@{/sales/createorupdate}" method="post" th:object="${sales}">
+    <div class="mb-3 mt-3">
+        <input type="hidden" class="form-control" id="id" name="id" th:value="*{id}">
+    </div>
+    <div class="mb-3 mt-3">
+        <label for="date"> Date:</label>
+        <input type="datetime-local" class="form-control" id="date" name="date" th:value="*{date}">
+    </div>
+    <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="payment" data-bs-toggle="dropdown" aria-expanded="false">
+            Payment By:
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="payment">
+            <li><a class="dropdown-item" href="#">Cash</a></li>
+            <li><a class="dropdown-item" href="#">PhonePay</a></li>
+            <li><a class="dropdown-item" href="#">Card</a></li>
+        </ul>
+    </div>
+    <div class="mb-3 mt-3">
+        <label for="discount">Discount:</label>
+        <input type="number" class="form-control" id="discount" placeholder="Enter discount" name="discount">
+    </div>
+    <div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+
+
+</form>
+</body>
+</html>
