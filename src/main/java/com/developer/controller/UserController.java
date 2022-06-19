@@ -31,6 +31,7 @@ public class UserController {
     @Autowired
     private RoleServices roleServices;
     List<Role> roleList;
+    private User user;
 
     private static final Logger LOGGER = LoggerFactory.getLogger(UserController.class);
 
@@ -78,8 +79,19 @@ public class UserController {
 
     @GetMapping("/update/{id}")
     public String updateUserForm(@PathVariable Long id, Model model){
-        User user = new User();
+        roleList = roleServices.getAllRoles();
         user = userServices.getUser(id);
+        user.setRoleList(roleList);
+
+        user.getUserRoles().forEach(userRole ->{
+            user.getRoleList().forEach(role -> {
+                if (userRole.getId().equals(role.getId())){
+                    role.setSelected(true);
+                }
+            });
+        });
+
+
         model.addAttribute("user", user);
         model.addAttribute("user_type", userTypeServices.getAllUserType());
         model.addAttribute("userTitle", "User Update");
