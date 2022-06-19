@@ -28,7 +28,7 @@ public class UserTypeController {
     @GetMapping("/create")
     public String userTypeAddForm(Model model)  {
         UserType userType = new UserType();
-        model.addAttribute("userTypeTitle", "User Create");
+        model.addAttribute("userTypeTitle", "User Type Create");
         model.addAttribute("userType", userType);
         return "usertype/user_addupdateform";
     }
@@ -59,7 +59,7 @@ public class UserTypeController {
         userType = userTypeServices.getUserType(id);
         model.addAttribute("userType", userType);
 
-        model.addAttribute("userTypeTitle", "User Update");
+        model.addAttribute("userTypeTitle", "User Type Update");
         return "usertype/user_addupdateform";
     }
 

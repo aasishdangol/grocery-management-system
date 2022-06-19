@@ -24,6 +24,9 @@
                     <label>Category:</label>
                     <select id="categoryId" name="categoryId" class="form-select"
                             th:field="*{category.id}">
+                        <option value="">
+                           --------- Select Any Category ----------
+                        </option>
                         <option th:each="categ: ${categories}"
                             th:value="${categ.id}"
                                 th:text="${categ.name}">
