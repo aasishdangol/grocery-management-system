@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragment/header::header (pageTitle='userType')">
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row flex-nowrap">
+        <div th:replace="fragment/sidenav::sidenav"></div>
+        <div class="col py-3">
+<h2>UserType Table</h2>
+<table class="table table-bordered table-secondary">
+    <thead>
+    <tr>
+        <th>User Id</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="usr,iterator : ${userTypeList}">
+        <td th:text="${usr.usertypeId}"></td>
+        <td th:text="${usr.name}">John</td>
+        <td th:text="${usr.description}"></td>
+        <td>
+            <div class="btn-group">
+                <a th:href="@{${'/usertype/update/' + usr.id}}" class="btn btn-primary"><i class="bi bi-pencil-fill"></i></a>
+                <a th:href="@{${'/usertype/delete/' + usr.id}}" class="btn btn-danger"><i class="bi bi-trash-fill"></i></a>
+            </div>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,75 @@
+ <div xmlns:th="http://www.thymeleaf.org"
+          th:fragment="sidenav" class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
+         <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+             <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                 <span class="fs-5 d-none d-sm-inline">Grocery Management System</span>
+             </a>
+             <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+                 <li class="nav-item">
+                     <a th:href="@{/identity/dashboard}" href="#" class="nav-link align-middle px-0 text-white">
+                         <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline text-white">Home</span>
+                     </a>
+                 </li>
+                 <li>
+                     <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle text-white ">
+                         <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Categories</span></a>
+                     <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
+                         <li class="w-100">
+                             <a th:href="@{/category/create}" href="#" class="nav-link px-0 text-white"> <span class="d-none d-sm-inline">Category</span> </a>
+                         </li>
+                         <li>
+                             <a th:href="@{/category/list}"  href="#" class="nav-link px-0 text-white"> <span class="d-none d-sm-inline">CategoryList</span> </a>
+                         </li>
+                     </ul>
+                 </li>
+                 <li>
+                     <a href="#submenu4" data-bs-toggle="collapse" class="nav-link px-0 align-middle text-white">
+                         <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Products</span> </a>
+                     <ul class="collapse nav flex-column ms-1" id="submenu4" data-bs-parent="#menu">
+                         <li class="w-100">
+                             <a th:href="@{/product/create}" href="#" class="nav-link px-0 text-white"> <span class="d-none d-sm-inline">Product</span> </a>
+                         </li>
+                         <li>
+                             <a th:href="@{/product/list}" href="#" class="nav-link px-0 text-white"> <span class="d-none d-sm-inline">ProductList</span> </a>
+                         </li>
+                     </ul>
+                 </li>
+                 <li>
+                     <a href="#submenu5" data-bs-toggle="collapse" class="nav-link px-0 align-middle text-white">
+                         <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Users</span> </a>
+                 <ul class="collapse nav flex-column ms-1" id="submenu5" data-bs-parent="#menu">
+                 <li class="w-100">
+                     <a th:href="@{/user/create}" href="#" class="nav-link px-0 text-white"> <span class="d-none d-sm-inline">User</span> </a>
+                 </li>
+                 <li>
+                     <a th:href="@{/user/list}" href="#" class="nav-link px-0 text-white"> <span class="d-none d-sm-inline">UsersList</span> </a>
+                 </li>
+             </ul>
+                 </li>
+             <li>
+                 <a href="#submenu6" data-bs-toggle="collapse" class="nav-link px-0 align-middle text-white">
+                     <i class="fs-4 bi-person-lines-fill"></i> <span class="ms-1 d-none d-sm-inline">UserTypes</span> </a>
+                 <ul class="collapse nav flex-column ms-1" id="submenu6" data-bs-parent="#menu">
+                     <li class="w-100">
+                         <a th:href="@{/usertype/create}" href="#" class="nav-link px-0 text-white"> <span class="d-none d-sm-inline">UserType</span> </a>
+                     </li>
+                     <li>
+                         <a th:href="@{/usertype/list}" href="#" class="nav-link px-0 text-white"> <span class="d-none d-sm-inline">UserTypeList</span> </a>
+                     </li>
+                 </ul>
+             </li>
+             </ul>
+             <hr>
+             <div class="dropdown pb-4">
+                 <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                     <img src="https://github.com/mdo.png" alt="hugenerd" width="30" height="30" class="rounded-circle">
+                     <span class="d-none d-sm-inline mx-1">aasishdangol</span>
+                 </a>
+                 <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+                     <li><a class="dropdown-item"th:href="@{/identity/profile}" href="#">Profile</a></li>
+                     <li><a class="dropdown-item" th:href="@{/identity/login}" href="#">Sign out</a></li>
+                 </ul>
+             </div>
+         </div>
+
+     </div>

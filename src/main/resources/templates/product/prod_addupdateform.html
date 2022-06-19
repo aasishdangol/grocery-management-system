@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragment/header::header (pageTitle='products')">
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row flex-nowrap">
+
+        <div th:replace="fragment/sidenav::sidenav"></div>
+
+        <div class="col py-3 " >
+            <h2 th:text="${productTitle}"></h2>
+            <p th:text="${message}"></p>
+            <form action="#" th:action="@{/product/createorupdate}" method="post" th:object="${product}">
+                <div class="mb-3 mt-3">
+                    <input type="hidden" class="form-control" id="id" name="id" th:value="*{id}">
+                </div>
+
+                <div class="mb-3 mt-3">
+                    <label for="name">Product Name:</label>
+                    <input type="text" class="form-control" id="name" placeholder="Enter category name" name="name" th:value="*{name}">
+                </div>
+                <div class="mb-3 mt-3  ">
+                    <label>Category:</label>
+                    <select id="categoryId" name="categoryId" class="form-select"
+                            th:field="*{category.id}">
+                        <option th:each="categ: ${categories}"
+                            th:value="${categ.id}"
+                                th:text="${categ.name}">
+
+                        </option>
+                    </select>
+                </div>
+
+                <div class="mb-3 mt-3">
+                    <label for="price">Price:</label>
+                    <input type="number" class="form-control" id="price" placeholder="Enter price name" name="price" th:value="*{price}">
+                </div>
+                <div class="mb-3 mt-3 ">
+                    <label for="quantity">Quantity:</label>
+                    <input type="number" class="form-control" id="quantity" placeholder="Enter quantity" name="quantity" th:value="*{quantity}">
+                </div>
+
+                <div class="mb-3 mt-3">
+                    <label for="description">Category Description:</label>
+                    <input type="text" class="form-control" id="description" placeholder="Enter Description" name="description">
+                </div>
+                <div class>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

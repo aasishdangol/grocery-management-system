@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragment/header::header (pageTitle='productslist')">
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row flex-nowrap">
+        <!--        sidenav-->
+        <div th:replace="fragment/sidenav::sidenav"></div>
+        <!--        content-->
+        <div class="col py-3">
+            <h2>Product Table</h2>
+            <table class="table table-bordered table-secondary">
+                <thead>
+                <tr>
+                    <th>S.N</th>
+                    <th>Product Id</th>
+                    <th>Name</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Description</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="prod,iterator : ${productList}">
+                    <td th:text="${iterator.count}">1</td>
+                    <td th:text="${prod.productId}">2</td>
+                    <td th:text="${prod.name}">John</td>
+                    <td th:text="${prod.quantity}">John</td>
+                    <td th:text="${prod.price}">Doe</td>
+                    <td th:text="${prod.description}">Doe</td>
+                    <td th:text="${prod.status}">Doe</td>
+                    <td>
+                        <div class="btn-group">
+                           <a th:href="@{${'/product/update/' + prod.id}}" class="btn btn-primary"><i class="bi bi-pencil-fill"></i></a>
+                            <a th:href="@{${'/product/delete/' + prod.id}}" class="btn btn-danger"><i class="bi bi-trash-fill"></i></a>
+                        </div>
+                    </td>
+                </tr>
+
+                </tbody>
+            </table>
+      </div>
+    </div>
+</div>
+
+
+</body>
+</html>
