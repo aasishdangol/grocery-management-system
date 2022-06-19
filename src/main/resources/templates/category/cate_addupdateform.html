@@ -26,7 +26,7 @@
                 </div>
                 <div class="mb-3 mt-3">
                     <label for="description">Category Description:</label>
-                    <input type="text" class="form-control" id="description" placeholder="Enter Description" name="description">
+                    <input type="text" class="form-control" id="description" placeholder="Enter Description" th:value="*{description}" name="description">
                 </div>
                 <div>
                     <button type="submit" class="btn btn-primary">Submit</button>
