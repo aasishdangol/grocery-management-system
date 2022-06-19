@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragment/header::header (pageTitle='categorylist')">
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row flex-nowrap">
+            <div th:replace="fragment/sidenav::sidenav"></div>
+        <div class="col py-3">
+            <h2>Role Table</h2>
+            <table class="table table-bordered table-secondary">
+            <thead>
+             <tr>
+            <th>S.N</th>
+            <th>Name</th>
+            <th>Description</th>
+                 <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="role,iterator : ${roleList}">
+            <td th:text="${iterator.count}">1</td>
+            <td th:text="${role.name}">John</td>
+            <td th:text="${role.description}">Doe</td>
+
+            <td>
+                <div class="btn-group">
+                    <a th:href="@{${'/role/update/' + role.id}}" class="btn btn-primary"><i class="bi bi-pencil-fill"></i></a>
+                    <a th:href="@{${'/role/delete/' + role.id}}" class="btn btn-danger"><i class="bi bi-trash-fill"></i></a>
+                </div>
+            </td>
+        </tr>
+
+        </tbody>
+    </table>
+</div>
+</div>
+</div>
+</body>
+</html>

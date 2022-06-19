@@ -1,6 +1,8 @@
 package com.developer.controller;
 
+import com.developer.entity.Role;
 import com.developer.entity.User;
+import com.developer.service.RoleServices;
 import com.developer.service.UserServices;
 import com.developer.service.UserTypeServices;
 import com.developer.util.ConstantValue;
@@ -13,6 +15,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+
 @Controller
 @RequestMapping("/user")
 public class UserController {
@@ -22,6 +28,10 @@ public class UserController {
     @Autowired
     private UserTypeServices userTypeServices;
 
+    @Autowired
+    private RoleServices roleServices;
+    List<Role> roleList;
+
     private static final Logger LOGGER = LoggerFactory.getLogger(UserController.class);
 
     @Autowired
@@ -30,6 +40,8 @@ public class UserController {
     @GetMapping("/create")
     public String userAddForm(Model model)  {
         User user = new User();
+        roleList = roleServices.getAllRoles();
+        user.setRoleList(roleList);
         model.addAttribute("userTitle", "User Create");
         model.addAttribute("user", user);
         model.addAttribute("user_type", userTypeServices.getAllUserType());
@@ -44,6 +56,13 @@ public class UserController {
 
     @PostMapping("/createorupdate")
     public String createUser(Model model, User user){
+        roleList = new ArrayList<>();
+        user.getRoleList().forEach(role -> {
+            if (role.getSelected()){
+                this.roleList.add(role);
+            }
+        });
+        user.setUserRoles(new HashSet<>(roleList));
         if (user.getId() != null){
             User dbUser = userServices.getUser(user.getId());
             user.setUserCode(dbUser.getUserCode());
