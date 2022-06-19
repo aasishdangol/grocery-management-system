@@ -7,6 +7,7 @@ public class ConstantValue {
     private static final String PROD_ID= "PROD";
     private static final String USER_ID= "USER";
     private static final String USE_ID= "UT";
+    private static final String SALE_ID ="SALE";
 
     public static final String generateProductId(){
         Random rnd = new Random();
@@ -28,6 +29,12 @@ public class ConstantValue {
         Random rmd = new Random();
         int number = rmd.nextInt(999999);
         return USE_ID + String.format("%06d",number);
+    }
+
+    public static final String generateSalesId(){
+        Random rmd = new Random();
+        int number = rmd.nextInt(999999);
+        return SALE_ID + String.format("%06d",number);
     }
 
 }
