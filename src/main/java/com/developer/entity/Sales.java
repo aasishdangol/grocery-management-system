@@ -1,10 +1,14 @@
 package com.developer.entity;
 
+import com.developer.util.ConstantValue;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 @Entity
 @Getter
@@ -34,44 +38,12 @@ public class Sales implements Serializable {
         @Transient
         private Boolean selected;
 
-        public Sales() {
-                super();
-        }
+        @Transient
+        private List<String> paymentMethod = Arrays.asList(ConstantValue.getPaymentMethods);
 
-        public Long getId() {
-                return id;
-        }
-        public void setId(Long id) {
-                this.id = id;
-        }
+        @Transient
+        private List<Product> productList = new ArrayList<>();
 
-        public String getDate() {
-                return date;
-        }
-        public void setDate(String date) {
-                this.date = date;
-        }
 
-        public String getPaymentBy() {
-                return paymentBy;
-        }
-        public void setPaymentBy(String paymentBy) {
-                this.paymentBy = paymentBy;
-        }
-
-        public String getDiscount() {
-                return discount;
-        }
-        public void setDiscount(String discount) {
-                this.discount = discount;
-        }
-
-        public Boolean getSelected() {
-                return selected;
-        }
-
-        public void setSelected(Boolean selected) {
-                this.selected = selected;
-        }
 }
 

@@ -37,4 +37,8 @@ public class ConstantValue {
         return SALE_ID + String.format("%06d",number);
     }
 
+    public static final String[] getPaymentMethods = {
+        "Cash","Card","Phone PAY","Bank"
+    };
+
 }
