@@ -6,7 +6,7 @@
 <div class="container-fluid">
     <div class="row flex-nowrap">
         <div th:replace="fragment/sidenav::sidenav"></div>
-        <div class="col py-3">
+        <div class="col py-3 form-custom">
                     <h2 th:text="${userTypeTitle}"></h2>
                     <p th:text="${message}"></p>
                     <form action="#" th:action="@{/usertype/createorupdate}" method="post" th:object="${userType}">

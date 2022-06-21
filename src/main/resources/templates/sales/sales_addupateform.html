@@ -6,7 +6,7 @@
 <div class="container-fluid">
     <div class="row flex-nowrap">
         <div th:replace="fragment/sidenav::sidenav"></div>
-        <div class="col py-3">
+        <div class="col py-3 form-custom">
 <h2 th:text="${salesTitle}"></h2>
 <p th:text="${message}"></p>
 <form action="#" th:action="@{/sales/createorupdate}" method="post" th:object="${sales}">
@@ -18,15 +18,27 @@
         <input type="datetime-local" class="form-control" id="date" name="date" th:value="*{date}">
     </div>
     <div class="dropdown mb-3 mt-3">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="paymentBy" data-bs-toggle="dropdown" aria-expanded="false">
-            Payment By:
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="paymentBy">
-            <li><a class="dropdown-item" href="#">Cash</a></li>
-            <li><a class="dropdown-item" href="#">PhonePay</a></li>
-            <li><a class="dropdown-item" href="#">Card</a></li>
-        </ul>
+        <label for="paymentBy">Payment By: </label>
+        <select class="form-control" id="paymentBy" name="paymentBy"
+                type="text"  th:value="*{paymentMethod}">
+            <option th:each="payment: *{paymentMethod}"
+                    th:value="${payment}"
+                    th:text="${payment}">
+            </option>
+        </select>
     </div>
+  <!--  <div class="dropdown mb-3 mt-3">
+        <label for="productList">Products: </label>
+        <select class="form-control" id="productList" name="productList"
+                type="text"  th:value="*{productList}">
+            <option th:each="product: *{productList}"
+                    th:value="${product.id}"
+                    th:text="${product.name}">
+            </option>
+
+        </select>
+        <button>Add</button>
+    </div>-->
     <div class="mb-3 mt-3">
         <label for="discount">Discount:</label>
         <input type="number" class="form-control" id="discount" placeholder="Enter discount" name="discount" th:value="*{discount}">
