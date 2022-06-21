@@ -28,6 +28,9 @@
                     <label>UserType:</label>
                     <select id="usertypeId" name="usertypeId" class="form-select"
                             th:field="*{userType.id}">
+                        <option value="">
+                            --------- Select Any UserType ----------
+                        </option>
                         <option th:each="usr: ${user_type}"
                                 th:value="${usr.id}"
                                 th:text="${usr.name}">
@@ -80,7 +83,7 @@
                 <div class="mb-3 mt-3">
                     <label for="password">Password:</label>
                     <input type="password" id="password" class="form-control" placeholder="Enter Password"
-                           name="password">
+                           name="password" th:value="*{password}">
                 </div>
 
                 <div class="mb-3 mt-3">

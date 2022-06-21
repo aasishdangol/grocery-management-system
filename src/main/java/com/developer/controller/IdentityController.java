@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/identity")
 public class IdentityController {
 
-
-
     @GetMapping(value = "/dashboard")
     public String dashboard(Model model) {
         return "/dashboard";
@@ -31,5 +29,11 @@ public class IdentityController {
     @GetMapping(value = "/index")
     public String indexPage(Model model) {
         return "/index";
+    }
+
+    @GetMapping(value = "/bill")
+    public String billPage(Model model) {
+        model.addAttribute("Userpage", new User());
+        return "/identity/bill";
     }
 }

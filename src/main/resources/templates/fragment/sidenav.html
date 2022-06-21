@@ -7,7 +7,7 @@
         <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
             <li class="nav-item">
                 <a th:href="@{/identity/dashboard}" href="#" class="nav-link align-middle px-0 text-white">
-                    <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline text-white">Home</span>
+                    <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline text-white">Dashboard</span>
                 </a>
             </li>
             <li>
@@ -28,7 +28,7 @@
 
             <li>
                 <a href="#submenu7" data-bs-toggle="collapse" class="nav-link px-0 align-middle text-white ">
-                    <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Roles</span></a>
+                    <i class="fs-4 bi-person-rolodex"></i></i> <span class="ms-1 d-none d-sm-inline">Roles</span></a>
                 <ul class="collapse nav flex-column ms-1" id="submenu7" data-bs-parent="#menu">
                     <li class="w-100">
                         <a th:href="@{/role/create}" href="#" class="nav-link px-0 text-white"> <span
@@ -80,6 +80,20 @@
                     <li>
                         <a th:href="@{/product/list}" href="#" class="nav-link px-0 text-white"> <span
                                 class="d-none d-sm-inline">Product List</span> </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#submenu8" data-bs-toggle="collapse" class="nav-link px-0 align-middle text-white">
+                <i class="fs-4 bi-shop"></i><span class="ms-1 d-none d-sm-inline">Sales</span> </a>
+                <ul class="collapse nav flex-column ms-1" id="submenu8" data-bs-parent="#menu">
+                    <li class="w-100">
+                        <a th:href="@{/sales/create}" href="#" class="nav-link px-0 text-white"> <span
+                                class="d-none d-sm-inline">Sale</span> </a>
+                    </li>
+                    <li>
+                        <a th:href="@{/sales/list}" href="#" class="nav-link px-0 text-white"> <span
+                                class="d-none d-sm-inline">Sale List</span> </a>
                     </li>
                 </ul>
             </li>
