@@ -30,6 +30,48 @@ public class Sales implements Serializable {
         @Column(name="discount")
         private String discount;
 
-        @Column(name = "status")
-        private String status;
+
+        @Transient
+        private Boolean selected;
+
+        public Sales() {
+                super();
+        }
+
+        public Long getId() {
+                return id;
+        }
+        public void setId(Long id) {
+                this.id = id;
+        }
+
+        public String getDate() {
+                return date;
+        }
+        public void setDate(String date) {
+                this.date = date;
+        }
+
+        public String getPaymentBy() {
+                return paymentBy;
+        }
+        public void setPaymentBy(String paymentBy) {
+                this.paymentBy = paymentBy;
+        }
+
+        public String getDiscount() {
+                return discount;
+        }
+        public void setDiscount(String discount) {
+                this.discount = discount;
+        }
+
+        public Boolean getSelected() {
+                return selected;
+        }
+
+        public void setSelected(Boolean selected) {
+                this.selected = selected;
+        }
 }
+

@@ -2,6 +2,7 @@ package com.developer.controller;
 
 import com.developer.entity.Sales;
 import com.developer.service.SalesServices;
+import com.developer.util.ConstantValue;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
@@ -9,12 +10,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
+
+import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
 
 
 @Controller
@@ -31,23 +31,27 @@ public class SalesController {
     @GetMapping("/create")
     public String salesAddForm(Model model){
        Sales sales = new Sales();
-        model.addAttribute("salesTitle",  "Sales Update");
+        model.addAttribute("salesTitle",  "Sales Add");
         model.addAttribute("sales", sales);
-        return "sales/salesaddupdateform";
+        return "sales/sales_addupateform";
     }
 
     @GetMapping("/list")
     public String saleslist(Model model) throws JsonProcessingException {
         model.addAttribute("salesList", salesServices.getAllSales());
-        return "sales/saleslist";
+        return "sales/sales_list";
     }
 
     @PostMapping("/createorupdate")
-    public String createSles(Model model, Sales sales){
+    public String createSales(Model model, Sales sales){
         if (sales.getId() != null){
-            salesServices.updateSales(sales, sales.getId());
+            Sales sale= salesServices.getSales(sales.getId());
+                sale.setDate(sales.getDate());
+                sale.setPaymentBy(sales.getPaymentBy());
+                sale.setDiscount(sales.getDiscount());
+             salesServices.updateSales(sale, sales.getId());
         }else {
-            sales.setStatus("Active");
+            sales.setSalesCode(ConstantValue.generateSalesId());
             sales.setDate(LocalDateTime.now().toString());
             salesServices.addSales(sales);
         }
@@ -61,7 +65,7 @@ public class SalesController {
         sales = salesServices.getSales(id);
         model.addAttribute("sales", sales);
         model.addAttribute("salesTitle",  "Sales Update");
-        return "category/salesaddupdateform";
+        return "sales/sales_addupateform";
     }
     @GetMapping("/delete/{id}")
     public String deleteSales(@PathVariable Long id) {

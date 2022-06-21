@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragment/header::header (pageTitle='Sales')">
 </head>
 <body>
-h2>Product Table</h2>
+<div class="container-fluid">
+    <div class="row flex-nowrap">
+        <div th:replace="fragment/sidenav::sidenav"></div>
+        <div class="col py-3">
+<h2>Product Table</h2>
 <table class="table table-bordered table-secondary">
     <thead>
     <tr>
@@ -14,7 +16,6 @@ h2>Product Table</h2>
         <th>Date</th>
         <th>Payment By</th>
         <th>Discount</th>
-        <th>Status</th>
         <th>Action</th>
     </tr>
     </thead>
@@ -25,7 +26,6 @@ h2>Product Table</h2>
         <td th:text="${sale.date}">2008/7/8</td>
         <td th:text="${sale.paymentBy}">cash</td>
         <td th:text="${sale.discount}">20</td>
-        <td th:text="${sale.status}">2</td>
         <td>
             <div class="btn-group">
                 <a th:href="@{${'/sales/update/' + sale.id}}" class="btn btn-primary"><i class="bi bi-pencil-fill"></i></a>
@@ -35,5 +35,8 @@ h2>Product Table</h2>
     </tr>
     </tbody>
 </table>
+        </div>
+    </div>
+</div>
 </body>
 </html>

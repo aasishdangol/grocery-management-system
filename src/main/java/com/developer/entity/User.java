@@ -58,6 +58,7 @@ public class User implements Serializable {
     @JoinColumn(name = "role_id"))
     private Set<Role> userRoles = new HashSet<>();
 
+
     @Transient
     private List<Role> roleList = new ArrayList<>();
 

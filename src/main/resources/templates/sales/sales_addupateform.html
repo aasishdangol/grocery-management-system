@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragment/header::header (pageTitle='Sales')">
 </head>
 <body>
+<div class="container-fluid">
+    <div class="row flex-nowrap">
+        <div th:replace="fragment/sidenav::sidenav"></div>
+        <div class="col py-3">
 <h2 th:text="${salesTitle}"></h2>
 <p th:text="${message}"></p>
-
 <form action="#" th:action="@{/sales/createorupdate}" method="post" th:object="${sales}">
     <div class="mb-3 mt-3">
         <input type="hidden" class="form-control" id="id" name="id" th:value="*{id}">
@@ -16,11 +17,11 @@
         <label for="date"> Date:</label>
         <input type="datetime-local" class="form-control" id="date" name="date" th:value="*{date}">
     </div>
-    <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="payment" data-bs-toggle="dropdown" aria-expanded="false">
+    <div class="dropdown mb-3 mt-3">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="paymentBy" data-bs-toggle="dropdown" aria-expanded="false">
             Payment By:
         </button>
-        <ul class="dropdown-menu" aria-labelledby="payment">
+        <ul class="dropdown-menu" aria-labelledby="paymentBy">
             <li><a class="dropdown-item" href="#">Cash</a></li>
             <li><a class="dropdown-item" href="#">PhonePay</a></li>
             <li><a class="dropdown-item" href="#">Card</a></li>
@@ -28,13 +29,15 @@
     </div>
     <div class="mb-3 mt-3">
         <label for="discount">Discount:</label>
-        <input type="number" class="form-control" id="discount" placeholder="Enter discount" name="discount">
+        <input type="number" class="form-control" id="discount" placeholder="Enter discount" name="discount" th:value="*{discount}">
     </div>
     <div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </div>
 
-
 </form>
+        </div>
+    </div>
+</div>
 </body>
 </html>

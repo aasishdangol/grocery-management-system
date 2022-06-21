@@ -5,6 +5,10 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -38,4 +42,15 @@ public class Product implements Serializable {
   @ManyToOne
   @JoinColumn(name="category_id")
   private Category category;
+
+  @ManyToMany(targetEntity = Sales.class, fetch = FetchType.EAGER)
+  @JoinTable(name = "sales_detail", joinColumns =
+  @JoinColumn(name = "sales_id"), inverseJoinColumns =
+  @JoinColumn(name = "product_id"))
+  private Set<Sales> salesDetail = new HashSet<>();
+
+
+  @Transient
+  private List<Sales> salesList = new ArrayList<>();
+
 }
