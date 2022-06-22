@@ -34,6 +34,9 @@ public class Sales implements Serializable {
         @Column(name="discount")
         private String discount;
 
+        @Column(name="product_items")
+        private String productItems;
+
 
         @Transient
         private Boolean selected;
