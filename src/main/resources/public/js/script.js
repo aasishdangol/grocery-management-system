@@ -6,6 +6,8 @@ $(function () {
     $("#insertRow").on("click", function (event) {
         event.preventDefault();
 
+//        var previousRow = document.getElementById("productTable").rows.length;
+
         var newRow = $("<tr>");
         var cols = '';
 
