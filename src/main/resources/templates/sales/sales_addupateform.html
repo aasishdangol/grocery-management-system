@@ -15,7 +15,7 @@
                 </div>
                 <div class="mb-3 mt-3">
                     <label for="date"> Date:</label>
-                    <input type="datetime-local" class="form-control" id="date" name="date" th:value="*{date}">
+                    <input type="date" class="form-control" id="date" name="date" th:value="*{date}">
                 </div>
                 <div class="dropdown mb-3 mt-3">
                     <label for="paymentBy">Payment By: </label>
@@ -53,7 +53,8 @@
                             <tbody>
                             <tr id="tableRow1">
                                 <!--                                    <td><input class="form-control rounded-0" type="text" name="product" placeholder="Product"></td>-->
-                                <td><select id="mySelect1" name="mySelect1" onchange="myFunction()" class="form-control rounded-0">
+                                <td><select id="mySelect1" name="mySelect1" onchange="myFunction()" class="form-control rounded-0"
+                                            th:name="|sales.productList[0].name|">
                                     <option class="form-control">-- Product  -----------------------</option>
                                     <option th:each="product: *{productList}"
                                             th:value="${product.id}"
@@ -61,7 +62,7 @@
                                     </option>
                                 </select></td>
                                 <td><input class="form-control rounded-0" type="number" id="price1" name="price1"
-                                           placeholder="Price"></td>
+                                           placeholder="Price" disabled></td>
                                 <td><input class="form-control rounded-0" type="number" id="quantity1" name="quantity1"
                                            placeholder="Quantity"></td>
                                 <td>
@@ -82,7 +83,7 @@
                 </div>
 
                 <div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary">Complete Transaction</button>
                 </div>
 
             </form>
@@ -104,8 +105,12 @@
         });
 
     function myFunction() {
+
     var id = $(this).closest('tr').find('input[name="price1"]').val();
     console.log(id)
+
+    var num = "'foofo21".match(/\d+/g);
+    console.log(num[0])
 
     var prodId = document.getElementById("mySelect1").value;
     console.log("you select:" +prodId);

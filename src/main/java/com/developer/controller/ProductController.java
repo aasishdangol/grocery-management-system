@@ -72,7 +72,7 @@ public class ProductController {
                 this.salesList.add(sales);
             }
         });
-        product.setSalesDetail(new HashSet<>(salesList));
+//        product.setSalesDetail(new HashSet<>(salesList));
 
         if (product.getId() != null){
             Product prod = productServices.getProduct(product.getId());
@@ -98,13 +98,13 @@ public class ProductController {
         product = productServices.getProduct(id);
         product.setSalesList(salesList);
 
-        product.getSalesDetail().forEach(salesDetail ->{
+      /*  product.getSalesDetail().forEach(salesDetail ->{
             product.getSalesList().forEach(sales -> {
                 if (salesDetail.getId().equals(sales.getId())){
                     sales.setSelected(true);
                 }
             });
-        });
+        });*/
         model.addAttribute("product", product);
         model.addAttribute("categories", categoryServices.getAllCategory());
         model.addAttribute("productTitle",  "Product Update");

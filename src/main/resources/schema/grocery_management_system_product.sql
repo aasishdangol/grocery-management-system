@@ -23,18 +23,18 @@ DROP TABLE IF EXISTS `product`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `product` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) DEFAULT NULL,
+  `id` bigint NOT NULL,
   `description` varchar(255) DEFAULT NULL,
-  `product_id` varchar(255) DEFAULT NULL,
-  `status` varchar(255) DEFAULT NULL,
-  `quantity` varchar(255) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
   `price` varchar(255) DEFAULT NULL,
-  `category_id` int DEFAULT NULL,
+  `product_code` varchar(255) DEFAULT NULL,
+  `quantity` varchar(255) DEFAULT NULL,
+  `status` varchar(255) DEFAULT NULL,
+  `category_id` bigint DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `FK_cateogries_ID` (`category_id`),
-  CONSTRAINT `FK_cateogries_ID` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  KEY `FK1mtsbur82frn64de7balymq9s` (`category_id`),
+  CONSTRAINT `FK1mtsbur82frn64de7balymq9s` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -43,7 +43,7 @@ CREATE TABLE `product` (
 
 LOCK TABLES `product` WRITE;
 /*!40000 ALTER TABLE `product` DISABLE KEYS */;
-INSERT INTO `product` VALUES (6,'pants test','test','PROD1738016','Active','11','1111',2),(17,'pants','Naked Express','PROD6663801','Active','5','600',2),(35,'chicken','test','PROD5804478','Active','80','500',34);
+INSERT INTO `product` VALUES (32,'Coke Desc','Coke','40','PROD708316','500','Active',4),(33,'Fanta Cold Drinks','Fanta','50','PROD634708','400','Active',4),(34,'nanglo bread','Nanglo','50','PROD291534','100','Active',5);
 /*!40000 ALTER TABLE `product` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -56,4 +56,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-06-19 11:14:58
+-- Dump completed on 2022-06-24  1:54:36
