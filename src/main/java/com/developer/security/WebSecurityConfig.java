@@ -52,4 +52,5 @@ public class WebSecurityConfig
 //            .logoutUrl("/identity/logout")
 //            .logoutSuccessUrl("/identity/login");
     }
+//>>>>>>> 6129707bec78be54a6b787a603f18918020c49ef
 }
