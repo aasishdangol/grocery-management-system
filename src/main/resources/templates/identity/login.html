@@ -70,17 +70,20 @@
 </head>
 <body class="text-center">
 <div class="bg-img">
-    <form action="" class="container">
+    <form action="#" method="post" class="container" th:object="${loginUser}">
         <h1>Login</h1>
 
-        <label for="email"><b>Email</b></label>
-        <input type="text" placeholder="Enter Email" name="email" id="email" required>
+        <label for="username"><b>Email</b></label>
+        <input type="text" placeholder="Enter Email" name="username" id="username" th:value="${loginUser.email}" required>
 
         <label for="password"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="password" id="password" required>
+        <input type="password" placeholder="Enter Password" name="password" id="password" th:value="${loginUser.password}" required>
 
-        <a class="btn" th:href="@{/identity/dashboard}">Login</a>
-<!--        <button type="submit" class="btn">Login</button>-->
+        <input type="hidden" th:name="${_csrf.parameterName}"
+               th:value="${_csrf.token}"/>
+
+<!--        <a class="btn" th:href="@{/identity/dashboard}">Login</a>-->
+        <button type="submit" class="btn">Login</button>
     </form>
 </div>
 

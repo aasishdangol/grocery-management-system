@@ -16,31 +16,30 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `category`
+-- Table structure for table `sales`
 --
 
-DROP TABLE IF EXISTS `category`;
+DROP TABLE IF EXISTS `sales`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `category` (
+CREATE TABLE `sales` (
   `id` bigint NOT NULL,
-  `category_code` varchar(255) DEFAULT NULL,
-  `create_date` varchar(255) DEFAULT NULL,
-  `category_desc` varchar(255) DEFAULT NULL,
-  `category_name` varchar(255) DEFAULT NULL,
-  `status` varchar(255) DEFAULT NULL,
+  `date` varchar(255) DEFAULT NULL,
+  `discount` varchar(255) DEFAULT NULL,
+  `payment_by` varchar(255) DEFAULT NULL,
+  `sales_code` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `category`
+-- Dumping data for table `sales`
 --
 
-LOCK TABLES `category` WRITE;
-/*!40000 ALTER TABLE `category` DISABLE KEYS */;
-INSERT INTO `category` VALUES (4,'CATE395069','2022-06-19T13:59:55.529','All type of Cold Drinks','Cold Drinks','Active'),(5,'CATE464873','2022-06-19T14:02:33.892','All type of Breads','Bread','Active');
-/*!40000 ALTER TABLE `category` ENABLE KEYS */;
+LOCK TABLES `sales` WRITE;
+/*!40000 ALTER TABLE `sales` DISABLE KEYS */;
+INSERT INTO `sales` VALUES (35,'2022-06-24T00:30:48.430','200','Cash','SALE895228');
+/*!40000 ALTER TABLE `sales` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -52,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-06-24  1:54:36
+-- Dump completed on 2022-06-24  1:54:38

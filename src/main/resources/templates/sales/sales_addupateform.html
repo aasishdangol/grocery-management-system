@@ -7,35 +7,36 @@
     <div class="row flex-nowrap">
         <div th:replace="fragment/sidenav::sidenav"></div>
         <div class="col py-3 form-custom">
-<h2 th:text="${salesTitle}"></h2>
-<p th:text="${message}"></p>
-<form action="#" th:action="@{/sales/createorupdate}" method="post" th:object="${sales}">
-    <div class="mb-3 mt-3">
-        <input type="hidden" class="form-control" id="id" name="id" th:value="*{id}">
-    </div>
-    <div class="mb-3 mt-3">
-        <label for="date"> Date:</label>
-        <input type="datetime-local" class="form-control" id="date" name="date" th:value="*{date}">
-    </div>
-    <div class="dropdown mb-3 mt-3">
-        <label for="paymentBy">Payment By: </label>
-        <select class="form-control" id="paymentBy" name="paymentBy"
-                type="text"  th:value="*{paymentMethod}">
-            <option th:each="payment: *{paymentMethod}"
-                    th:value="${payment}"
-                    th:text="${payment}">
-            </option>
-        </select>
-    </div>
-  <!--  <div class="dropdown mb-3 mt-3">
-        <label for="productList">Products: </label>
-        <select class="form-control" id="productList" name="productList"
-                type="text"  th:value="*{productList}">
-            <option th:each="product: *{productList}"
-                    th:value="${product.id}"
-                    th:text="${product.name}">
-            </option>
+            <h2 th:text="${salesTitle}"></h2>
+            <p th:text="${message}"></p>
+            <form action="#" th:action="@{/sales/createorupdate}" method="post" th:object="${sales}">
+                <div class="mb-3 mt-3">
+                    <input type="hidden" class="form-control" id="id" name="id" th:value="*{id}">
+                </div>
+                <div class="mb-3 mt-3">
+                    <label for="date"> Date:</label>
+                    <input type="date" class="form-control" id="date" name="date" th:value="*{date}">
+                </div>
+                <div class="dropdown mb-3 mt-3">
+                    <label for="paymentBy">Payment By: </label>
+                    <select class="form-control" id="paymentBy" name="paymentBy"
+                            type="text" th:value="*{paymentMethod}">
+                        <option th:each="payment: *{paymentMethod}"
+                                th:value="${payment}"
+                                th:text="${payment}">
+                        </option>
+                    </select>
+                </div>
+                <!--  <div class="dropdown mb-3 mt-3">
+                      <label for="productList">Products: </label>
+                      <select class="form-control" id="productList" name="productList"
+                              type="text"  th:value="*{productList}">
+                          <option th:each="product: *{productList}"
+                                  th:value="${product.id}"
+                                  th:text="${product.name}">
+                          </option>
 
+<<<<<<< HEAD
         </select>
         <button>Add</button>
     </div>-->
@@ -81,20 +82,101 @@
                         </div>
 
                         <!-- Add rows button-->
+=======
+                      </select>
+                      <button>Add</button>
+                  </div>-->
+                <div class="mb-3 mt-3">
+                    <label for="discount">Discount:</label>
+                    <input type="number" class="form-control" id="discount" placeholder="Enter discount" name="discount"
+                           th:value="*{discount}">
+                </div>
+                <div class="mb-3 mt-3">
+                   
+                    <label>Product Items:</label>
+<!--&gt;>>>>>> 6129707bec78be54a6b787a603f18918020c49ef-->
 
+                    <div class="table-responsive table-bordered">
+                        <table id="productTable" class="table">
+                            <tbody>
+                            <tr id="tableRow1">
+                                <!--                                    <td><input class="form-control rounded-0" type="text" name="product" placeholder="Product"></td>-->
+                                <td><select id="mySelect1" name="mySelect1" onchange="myFunction()" class="form-control rounded-0"
+                                            th:name="|sales.productList[0].name|">
+                                    <option class="form-control">-- Product  -----------------------</option>
+                                    <option th:each="product: *{productList}"
+                                            th:value="${product.id}"
+                                            th:text="${product.name}">Products
+                                    </option>
+                                </select></td>
+                                <td><input class="form-control rounded-0" type="number" id="price1" name="price1"
+                                           placeholder="Price" disabled></td>
+                                <td><input class="form-control rounded-0" type="number" id="quantity1" name="quantity1"
+                                           placeholder="Quantity"></td>
+                                <td>
+                                    <input class="form-control rounded-0" type="number"  id="total1" name="total1"
+                                           placeholder="Total" disabled></td>
+                                <td>
+                                    <button class="btn btn-danger rounded-0" id="deleteRow"><i class="fa fa-trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <a class="btn btn-primary rounded-0 btn-block" id="insertRow" href="#">Add new Product</a>
                     </div>
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-    <div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </div>
 
-</form>
+                    <!-- Add rows button-->
+
+                </div>
+
+                <div>
+                    <button type="submit" class="btn btn-primary">Complete Transaction</button>
+                </div>
+
+            </form>
         </div>
     </div>
 </div>
 <footer th:replace="fragment/footer::footer"></footer>
+<script th:inline="javascript">
+
+        const quantity1 = document.querySelector('#quantity1');
+
+        quantity1.addEventListener('input', function () {
+
+        var price1 = document.getElementById('price1').value;
+        var quantity1 = document.getElementById('quantity1').value;
+        var result = quantity1 * price1;
+
+        document.querySelector('input[name="total1"]').value = result;
+        });
+
+    function myFunction() {
+
+    var id = $(this).closest('tr').find('input[name="price1"]').val();
+    console.log(id)
+
+    var num = "'foofo21".match(/\d+/g);
+    console.log(num[0])
+
+    var prodId = document.getElementById("mySelect1").value;
+    console.log("you select:" +prodId);
+    var href ='http://' +window.location.host +"/product/"+prodId;
+
+
+   fetch(href)
+    .then(response => {
+    return response.json();
+    }).then(product => {
+        $('#price1').val(product.price);
+    console.log(product);
+    console.log(product.name);
+    })
+
+
+}
+
+</script>
 </body>
 </html>

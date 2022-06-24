@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -34,8 +35,8 @@ public class Sales implements Serializable {
         @Column(name="discount")
         private String discount;
 
-        @Column(name="product_items")
-        private String productItems;
+        @OneToMany(mappedBy = "sales")
+        private Set<SalesDetails> salesDetails;
 
 
         @Transient
