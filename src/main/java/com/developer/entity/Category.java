@@ -9,6 +9,7 @@ import java.io.Serializable;
 @Entity
 @Getter
 @Setter
+@Table(name = "category")
 public class Category implements Serializable {
     private static final long serialversionUID = 20220906001637L;
 

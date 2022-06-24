@@ -16,10 +16,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -45,6 +42,12 @@ public class ProductController {
     @Autowired
     ObjectMapper objectMapper;
 
+    @ResponseBody
+    @GetMapping("/{id}")
+    public Product getProductById(@PathVariable Long id){
+        return productServices.getProduct(id);
+    }
+
     @GetMapping("/create")
     public String productAddForm(Model model){
         Product product = new Product();
@@ -69,7 +72,7 @@ public class ProductController {
                 this.salesList.add(sales);
             }
         });
-        product.setSalesDetail(new HashSet<>(salesList));
+//        product.setSalesDetail(new HashSet<>(salesList));
 
         if (product.getId() != null){
             Product prod = productServices.getProduct(product.getId());
@@ -95,13 +98,13 @@ public class ProductController {
         product = productServices.getProduct(id);
         product.setSalesList(salesList);
 
-        product.getSalesDetail().forEach(salesDetail ->{
+      /*  product.getSalesDetail().forEach(salesDetail ->{
             product.getSalesList().forEach(sales -> {
                 if (salesDetail.getId().equals(sales.getId())){
                     sales.setSelected(true);
                 }
             });
-        });
+        });*/
         model.addAttribute("product", product);
         model.addAttribute("categories", categoryServices.getAllCategory());
         model.addAttribute("productTitle",  "Product Update");

@@ -23,20 +23,20 @@ DROP TABLE IF EXISTS `user`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `user` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `user_id` varchar(255) DEFAULT NULL,
-  `first_name` varchar(255) DEFAULT NULL,
-  `last_name` varchar(255) DEFAULT NULL,
-  `email` varchar(255) DEFAULT NULL,
+  `id` bigint NOT NULL,
   `address` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `first_name` varchar(255) DEFAULT NULL,
   `gender` varchar(255) DEFAULT NULL,
-  `status` varchar(255) DEFAULT NULL,
+  `last_name` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
-  `usertype_id` int DEFAULT NULL,
+  `status` varchar(255) DEFAULT NULL,
+  `user_code` varchar(255) DEFAULT NULL,
+  `usertype_id` bigint DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FK4nc7vu5h8yfxgq1sxpf8n96ic` (`usertype_id`),
   CONSTRAINT `FK4nc7vu5h8yfxgq1sxpf8n96ic` FOREIGN KEY (`usertype_id`) REFERENCES `user_type` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -45,7 +45,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (32,'USER785807','aasish','dangol','gironspace7788@gmail.com','khokana','male','Active','aasish@1234',29),(33,'USER367326','ram','dangol','ram@gmail.com','ktm','male','Active','ram@1234',28),(37,'USER087487','Yunika','Shakya','yunikashakya1@gmail.com','ktm','female','Active','yunika!123',29);
+INSERT INTO `user` VALUES (3,'Khokana, Lalitpur`','testtest@mailinator.com','test','male','Dangol','$2a$12$s.XIwQ8rm5X2MOUBpRyWR.YE3aFw/SmLxDRfekDbrV4OIZrz2/Pt6','Active','USER549696',1),(6,'khokana','sita@mailinator.com','Sita','female','Dangol','$2a$12$s.XIwQ8rm5X2MOUBpRyWR.YE3aFw/SmLxDRfekDbrV4OIZrz2/Pt6','Active','USER063084',2),(7,'khokana','ram@mailinator.com','Ram','male','Maharjan','$2a$12$s.XIwQ8rm5X2MOUBpRyWR.YE3aFw/SmLxDRfekDbrV4OIZrz2/Pt6','Active','USER295463',1),(8,'khokana','hero@mailinator.com','Hero','male','test','$2a$12$s.XIwQ8rm5X2MOUBpRyWR.YE3aFw/SmLxDRfekDbrV4OIZrz2/Pt6','Active','USER414939',2),(18,'fasd','test@mailinator.com','fasdf','male','fasd','$2a$12$s.XIwQ8rm5X2MOUBpRyWR.YE3aFw/SmLxDRfekDbrV4OIZrz2/Pt6','Active','USER093626',1);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -58,4 +58,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-06-19 11:14:58
+-- Dump completed on 2022-06-24  1:54:38

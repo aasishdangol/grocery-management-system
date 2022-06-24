@@ -15,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
@@ -37,9 +38,11 @@ public class SalesController {
     @GetMapping("/create")
     public String salesAddForm(Model model){
         List<Product> productList = productServices.getAllProduct();
-       Sales sales = new Sales();
-       sales.setProductList(productList);
+        List<Product> productEmptyList = new ArrayList<>();
+        Sales sales = new Sales();
+        sales.setProductList(productList);
         model.addAttribute("salesTitle",  "Sales Add");
+        model.addAttribute("productEmptyList",  productEmptyList);
         model.addAttribute("sales", sales);
         return "sales/sales_addupateform";
     }

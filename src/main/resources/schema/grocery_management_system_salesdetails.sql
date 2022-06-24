@@ -16,31 +16,34 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `category`
+-- Table structure for table `salesdetails`
 --
 
-DROP TABLE IF EXISTS `category`;
+DROP TABLE IF EXISTS `salesdetails`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `category` (
+CREATE TABLE `salesdetails` (
   `id` bigint NOT NULL,
-  `category_code` varchar(255) DEFAULT NULL,
-  `create_date` varchar(255) DEFAULT NULL,
-  `category_desc` varchar(255) DEFAULT NULL,
-  `category_name` varchar(255) DEFAULT NULL,
-  `status` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `amount` varchar(255) DEFAULT NULL,
+  `quantity` varchar(255) DEFAULT NULL,
+  `product_id` bigint NOT NULL,
+  `sales_id` bigint NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FKfarglyi7k3k03xiq4ndh4lit0` (`product_id`),
+  KEY `FKb6lv7lg7xj68g7wcj5uaidg5u` (`sales_id`),
+  CONSTRAINT `FKb6lv7lg7xj68g7wcj5uaidg5u` FOREIGN KEY (`sales_id`) REFERENCES `sales` (`id`),
+  CONSTRAINT `FKfarglyi7k3k03xiq4ndh4lit0` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `category`
+-- Dumping data for table `salesdetails`
 --
 
-LOCK TABLES `category` WRITE;
-/*!40000 ALTER TABLE `category` DISABLE KEYS */;
-INSERT INTO `category` VALUES (4,'CATE395069','2022-06-19T13:59:55.529','All type of Cold Drinks','Cold Drinks','Active'),(5,'CATE464873','2022-06-19T14:02:33.892','All type of Breads','Bread','Active');
-/*!40000 ALTER TABLE `category` ENABLE KEYS */;
+LOCK TABLES `salesdetails` WRITE;
+/*!40000 ALTER TABLE `salesdetails` DISABLE KEYS */;
+INSERT INTO `salesdetails` VALUES (37,'40','10',32,35),(38,'50','10',33,35),(39,'50','10',34,35);
+/*!40000 ALTER TABLE `salesdetails` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -52,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-06-24  1:54:36
+-- Dump completed on 2022-06-24  1:54:37
