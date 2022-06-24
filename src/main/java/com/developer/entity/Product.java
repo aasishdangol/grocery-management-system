@@ -13,6 +13,7 @@ import java.util.Set;
 @Entity
 @Getter
 @Setter
+@Table(name = "product")
 public class Product implements Serializable {
   private static final long serialversionUID = 202200615001617L;
 
@@ -43,11 +44,14 @@ public class Product implements Serializable {
   @JoinColumn(name="category_id")
   private Category category;
 
-  @ManyToMany(targetEntity = Sales.class, fetch = FetchType.EAGER)
+ /* @ManyToMany(targetEntity = Sales.class, fetch = FetchType.EAGER)
   @JoinTable(name = "sales_detail", joinColumns =
   @JoinColumn(name = "sales_id"), inverseJoinColumns =
   @JoinColumn(name = "product_id"))
-  private Set<Sales> salesDetail = new HashSet<>();
+  private Set<Sales> salesDetail = new HashSet<>();*/
+
+  @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+  private Set<SalesDetails> salesDetails;
 
 
   @Transient

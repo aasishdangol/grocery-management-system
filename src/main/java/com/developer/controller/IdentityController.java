@@ -17,7 +17,7 @@ public class IdentityController {
 
     @GetMapping(value = "/login")
     public String loginPage(Model model) {
-        model.addAttribute("Userpage", new User());
+        model.addAttribute("loginUser", new User());
         return "/identity/login";
     }
 
