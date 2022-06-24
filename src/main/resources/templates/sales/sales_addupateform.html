@@ -52,8 +52,8 @@
 <!--                    <div class="card-body p-5">-->
 
 
-                        <div class="table-responsive table-bordered">
-                            <table  class="table">
+                        <div class="table-responsive ">
+                            <table  class="table table-bordered">
                                 <thead>
                                <!-- <tr>
                                     <th scope="col">S.N</th>
@@ -67,7 +67,7 @@
                                 <tr>
 <!--                                    <th scrope="row" >1</th>-->
 <!--                                    <td><input class="form-control rounded-0" type="text" name="product" placeholder="Product"></td>-->
-                                    <td><select class="form-control form-product">
+                                    <td><select class="form-control rounded-0" id="price">
                                         <option th:each="product: *{productList}" th:value="${product.id}" th:text="${product.name}">Products</option>
                                     </select></td>
                                     <td ><input class="form-control rounded-0"   type="number" name="price" placeholder="Price"></td>
