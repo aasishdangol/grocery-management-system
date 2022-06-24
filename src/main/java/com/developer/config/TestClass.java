@@ -29,7 +29,7 @@ public class TestClass {
     @Autowired
     SalesDetailsServices salesDetailsServices;
 
-//    @PostConstruct
+    @PostConstruct
     public void test(){
         List<SalesDetails> salesDetailsList = new ArrayList<>();
 
@@ -49,7 +49,7 @@ public class TestClass {
 
         salesDetailsServices.saveSalesDetailsList(salesDetailsList);*/
 
-        List<SalesDetails> salesDetails = salesDetailsServices.getSalesDetailsList((long) 35);
+//        List<SalesDetails> salesDetails = salesDetailsServices.getSalesDetailsList((long) 35);
 //        Sales sales = salesServices.getSales((long) 35);
 
 

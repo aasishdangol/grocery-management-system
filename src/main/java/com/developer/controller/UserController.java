@@ -11,6 +11,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -43,6 +44,7 @@ public class UserController {
     private BCryptPasswordEncoder passwordEncoder;
 
     @GetMapping("/create")
+    @PreAuthorize("hasAuthority('GET_USER')")
     public String userAddForm(Model model)  {
         User user = new User();
         roleList = roleServices.getAllRoles();
@@ -54,12 +56,14 @@ public class UserController {
     }
 
     @GetMapping("/list")
+    @PreAuthorize("hasAuthority('LIST_USER')")
     public String userlist(Model model) throws JsonProcessingException {
         model.addAttribute("userList", userServices.getAllUsers());
         return "user/userlist";
     }
 
     @PostMapping("/createorupdate")
+    @PreAuthorize("hasAuthority('CREATE_USER')")
     public String createUser(Model model, User user){
         roleList = new ArrayList<>();
         user.getRoleList().forEach(role -> {
