@@ -47,7 +47,7 @@
                         </thead>
                         <tbody>
                         <tr th:each="product,iterator : ${salesDetails.product}">
-                            <th scope="row">1</th>
+                            <th scope="row" th:text="${iterator.count}">1</th>
                             <td th:text="${product.name}">Buff</td>
                             <td th:text="${product.quantity}">4</td>
                             <td th:text="${product.sellingPrice}">200</td>
