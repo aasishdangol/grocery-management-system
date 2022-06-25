@@ -14,6 +14,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -49,6 +50,7 @@ public class ProductController {
     }
 
     @GetMapping("/create")
+    @PreAuthorize("hasAuthority('GET_PRODUCT')")
     public String productAddForm(Model model){
         Product product = new Product();
         salesList = salesServices.getAllSales();
@@ -60,11 +62,14 @@ public class ProductController {
     }
 
     @GetMapping("/list")
+    @PreAuthorize("hasAuthority('LIST_PRODUCT')")
     public String productlist(Model model) throws JsonProcessingException {
         model.addAttribute("productList", productServices.getAllProduct());
         return "product/prod_list";
     }
+
     @PostMapping("/createorupdate")
+        @PreAuthorize("hasAuthority('CREATE_PRODUCT')")
     public String createProduct(Model model, Product product){
         salesList = new ArrayList<>();
         product.getSalesList().forEach(sales -> {
@@ -93,6 +98,7 @@ public class ProductController {
     }
 
     @GetMapping("/update/{id}")
+    @PreAuthorize("hasAuthority('UPDATE_PRODUCT')")
     public String updateProductForm(@PathVariable Long id, Model model){
         salesList =salesServices.getAllSales();
         product = productServices.getProduct(id);
@@ -111,6 +117,7 @@ public class ProductController {
         return "product/prod_addupdateform";
     }
     @GetMapping("/delete/{id}")
+    @PreAuthorize("hasAuthority('DELETE_PRODUCT')")
     public String deleteProduct(@PathVariable Long id) {
         productServices.deleteProduct(id);
         return "redirect:/product/list";

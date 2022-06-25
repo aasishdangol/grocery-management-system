@@ -37,7 +37,6 @@ public class WebSecurityConfig
             .antMatchers("/image/**").permitAll()
             .antMatchers("/js/**").permitAll()
                 .antMatchers("/salesdetails/**").permitAll()
-            .antMatchers("/").permitAll()
             .anyRequest().authenticated()
             .and()
         .formLogin()
@@ -45,7 +44,7 @@ public class WebSecurityConfig
             .defaultSuccessUrl("/identity/dashboard", true)
             .permitAll()
             .and()
-                .exceptionHandling().accessDeniedPage("/identity/403page")
+                .exceptionHandling().accessDeniedPage("/identity/404page")
                 .and()
         .logout()
             .permitAll();

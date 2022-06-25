@@ -8,6 +8,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,6 +30,7 @@ public class RoleController {
     ObjectMapper objectMapper;
 
     @GetMapping("/create")
+    @PreAuthorize("hasAuthority('GET_ROLE')")
     public String RoleAddForm(Model model){
         Role role = new Role();
         model.addAttribute("userRoleTitle",  "Role Add");
@@ -37,12 +39,15 @@ public class RoleController {
     }
 
     @GetMapping("/list")
+    @PreAuthorize("hasAuthority('LIST_ROLE')")
     public String Rolelist(Model model) throws JsonProcessingException {
         model.addAttribute("roleList", roleServices.getAllRoles());
         return "role/role_list";
     }
 
     @PostMapping("/createorupdate")
+    @PreAuthorize("hasAuthority('CREATE_ROLE')")
+
     public String createRole(Model model, Role role){
         if (role.getId() != null){
             roleServices.updateRole(role, role.getId());
@@ -56,6 +61,7 @@ public class RoleController {
 
 
     @GetMapping("/update/{id}")
+    @PreAuthorize("hasAuthority('UPDATE_ROLE')")
     public String updateRoleForm(@PathVariable Long id, Model model){
         Role role = new Role();
         role = roleServices.getRole(id);
@@ -65,6 +71,7 @@ public class RoleController {
     }
 
     @GetMapping("/delete/{id}")
+    @PreAuthorize("hasAuthority('DELETE_ROLE')")
     public String deleteRole(@PathVariable Long id) {
         roleServices.deleteRole(id);
         return "redirect:/role/list";

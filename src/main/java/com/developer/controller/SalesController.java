@@ -10,6 +10,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -36,6 +37,7 @@ public class SalesController {
     ObjectMapper objectMapper;
 
     @GetMapping("/create")
+    @PreAuthorize("hasAuthority('GET_SALES')")
     public String salesAddForm(Model model){
         List<Product> productList = productServices.getAllProduct();
         List<Product> productEmptyList = new ArrayList<>();
@@ -48,12 +50,14 @@ public class SalesController {
     }
 
     @GetMapping("/list")
+    @PreAuthorize("hasAuthority('LIST_SALES')")
     public String saleslist(Model model) throws JsonProcessingException {
         model.addAttribute("salesList", salesServices.getAllSales());
         return "sales/sales_list";
     }
 
     @PostMapping("/createorupdate")
+    @PreAuthorize("hasAuthority('CREATE_SALES')")
     public String createSales(Model model, Sales sales){
         if (sales.getId() != null){
             Sales sale= salesServices.getSales(sales.getId());
@@ -71,6 +75,7 @@ public class SalesController {
 
 
     @GetMapping("/update/{id}")
+    @PreAuthorize("hasAuthority('UPDATE_SALES')")
     public String updateSalesForm(@PathVariable Long id, Model model){
         List<Product> productList = productServices.getAllProduct();
         Sales sales = new Sales();
@@ -81,6 +86,7 @@ public class SalesController {
         return "sales/sales_addupateform";
     }
     @GetMapping("/delete/{id}")
+    @PreAuthorize("hasAuthority('DELETE_SALES')")
     public String deleteSales(@PathVariable Long id) {
         salesServices.deleteSales(id);
         return "redirect:/sales/list";

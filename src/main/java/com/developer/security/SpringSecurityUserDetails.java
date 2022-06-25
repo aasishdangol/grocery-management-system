@@ -35,6 +35,7 @@ public class SpringSecurityUserDetails implements UserDetailsService {
         try {
             userList = userService.getUserByEmail(username);
 
+
             if (userList!= null && !userList.isEmpty()) {
 
                 user = userList.get(0);
