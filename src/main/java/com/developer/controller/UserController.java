@@ -38,14 +38,14 @@ public class UserController {
     private static final Logger LOGGER = LoggerFactory.getLogger(UserController.class);
 
     @Autowired
-     ObjectMapper objectMapper;
+    ObjectMapper objectMapper;
 
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
 
     @GetMapping("/create")
     @PreAuthorize("hasAuthority('GET_USER')")
-    public String userAddForm(Model model)  {
+    public String userAddForm(Model model) {
         User user = new User();
         roleList = roleServices.getAllRoles();
         user.setRoleList(roleList);
@@ -64,20 +64,20 @@ public class UserController {
 
     @PostMapping("/createorupdate")
     @PreAuthorize("hasAuthority('CREATE_USER')")
-    public String createUser(Model model, User user){
+    public String createUser(Model model, User user) {
         roleList = new ArrayList<>();
         user.getRoleList().forEach(role -> {
-            if (role.getSelected()){
+            if (role.getSelected()) {
                 this.roleList.add(role);
             }
         });
         user.setUserRoles(new HashSet<>(roleList));
-        if (user.getId() != null){
+        if (user.getId() != null) {
             User dbUser = userServices.getUser(user.getId());
             user.setUserCode(dbUser.getUserCode());
             user.setStatus(dbUser.getStatus());
             userServices.updateUser(user, user.getId());
-        }else {
+        } else {
             user.setPassword(passwordEncoder.encode(user.getPassword()));
             user.setUserCode(ConstantValue.generateUserId());
             user.setStatus("Active");
@@ -88,14 +88,14 @@ public class UserController {
 
     @GetMapping("/update/{id}")
     @PreAuthorize("hasAuthority('UPDATE_USER')")
-    public String updateUserForm(@PathVariable Long id, Model model){
+    public String updateUserForm(@PathVariable Long id, Model model) {
         roleList = roleServices.getAllRoles();
         user = userServices.getUser(id);
         user.setRoleList(roleList);
 
-        user.getUserRoles().forEach(userRole ->{
+        user.getUserRoles().forEach(userRole -> {
             user.getRoleList().forEach(role -> {
-                if (userRole.getId().equals(role.getId())){
+                if (userRole.getId().equals(role.getId())) {
                     role.setSelected(true);
                 }
             });
@@ -111,7 +111,7 @@ public class UserController {
 
     @GetMapping("/delete/{id}")
     @PreAuthorize("hasAuthority('DELETE_USER')")
-    public String deleteUser(@PathVariable Long id){
+    public String deleteUser(@PathVariable Long id) {
         userServices.deleteUser(id);
         return "redirect:/user/list";
     }

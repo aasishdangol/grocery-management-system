@@ -1,5 +1,6 @@
 package com.developer.controller;
 
+import com.developer.dao.ProductDto;
 import com.developer.entity.Product;
 import com.developer.entity.Role;
 import com.developer.entity.Sales;
@@ -45,8 +46,17 @@ public class ProductController {
 
     @ResponseBody
     @GetMapping("/{id}")
-    public Product getProductById(@PathVariable Long id){
-        return productServices.getProduct(id);
+    public ProductDto getProductById(@PathVariable Long id){
+        ProductDto productDto = new ProductDto();
+
+        product = productServices.getProduct(id);
+
+        productDto.setId(product.getId());
+        productDto.setName(product.getName());
+        productDto.setQuantity(product.getQuantity());
+        productDto.setSellingPrice(product.getPrice());
+
+        return productDto;
     }
 
     @GetMapping("/create")
