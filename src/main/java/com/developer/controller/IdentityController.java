@@ -1,6 +1,7 @@
 package com.developer.controller;
 
 import com.developer.entity.User;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +16,11 @@ public class IdentityController {
         return "/dashboard";
     }
 
+    @GetMapping(value = "/404page")
+    public String accessDeniedPage(){
+        return "/404page";
+    }
+
     @GetMapping(value = "/login")
     public String loginPage(Model model) {
         model.addAttribute("loginUser", new User());
@@ -22,6 +28,7 @@ public class IdentityController {
     }
 
     @GetMapping(value = "/profile")
+   @PreAuthorize("hasAuthority('PROFILE_VIEW')")
     public String profilePage(Model model) {
         model.addAttribute("Userpage", new User());
         return "/identity/profile";
@@ -31,9 +38,10 @@ public class IdentityController {
         return "/index";
     }
 
-    @GetMapping(value = "/bill")
-    public String billPage(Model model) {
-        model.addAttribute("Userpage", new User());
-        return "/identity/bill";
-    }
+//    @GetMapping(value = "/bill")
+//    @PreAuthorize("hasAuthority('BILL_VIEW')")
+//    public String billPage(Model model) {
+//        model.addAttribute("Userpage", new User());
+//        return "/sales_details";
+//    }
 }

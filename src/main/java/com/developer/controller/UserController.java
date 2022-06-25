@@ -87,6 +87,7 @@ public class UserController {
     }
 
     @GetMapping("/update/{id}")
+    @PreAuthorize("hasAuthority('UPDATE_USER')")
     public String updateUserForm(@PathVariable Long id, Model model){
         roleList = roleServices.getAllRoles();
         user = userServices.getUser(id);
@@ -109,6 +110,7 @@ public class UserController {
 
 
     @GetMapping("/delete/{id}")
+    @PreAuthorize("hasAuthority('DELETE_USER')")
     public String deleteUser(@PathVariable Long id){
         userServices.deleteUser(id);
         return "redirect:/user/list";

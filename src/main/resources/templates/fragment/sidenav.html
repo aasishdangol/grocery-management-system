@@ -47,13 +47,11 @@
                 <ul class="collapse nav flex-column ms-1" id="submenu5" data-bs-parent="#menu">
                     <li class="w-100">
                         <a th:href="@{/user/create}"
-                           sec:authorize="hasAuthority('GET_USER')"
                            href="#" class="nav-link px-0 text-white"> <span
                                 class="d-none d-sm-inline">User</span> </a>
                     </li>
                     <li>
                         <a th:href="@{/user/list}"
-                           sec:authorize="hasAuthority('LIST_USER')"
                            href="#" class="nav-link px-0 text-white"> <span
                                 class="d-none d-sm-inline">User List</span> </a>
                     </li>
@@ -109,7 +107,7 @@
             <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
                id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
                 <img src="https://github.com/mdo.png" alt="hugenerd" width="30" height="30" class="rounded-circle">
-                <span class="d-none d-sm-inline mx-1">aasishdangol</span>
+               <span class="d-none d-sm-inline mx-1">hello [[${#httpServletRequest.remoteUser}]]!</span>
             </a>
             <ul class="dropdown-menu dropdown-menu-secondary text-small-white bg-dark">
                 <li><a class="dropdown-item" th:href="@{/identity/profile}" href="#">Profile</a></li>

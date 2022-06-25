@@ -8,6 +8,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,6 +27,7 @@ public class UserTypeController {
     ObjectMapper objectMapper;
 
     @GetMapping("/create")
+    @PreAuthorize("hasAuthority('GET_USERTYPE')")
     public String userTypeAddForm(Model model)  {
         UserType userType = new UserType();
         model.addAttribute("userTypeTitle", "User Type Create");
@@ -34,12 +36,14 @@ public class UserTypeController {
     }
 
     @GetMapping("/list")
+    @PreAuthorize("hasAuthority('LIST_USERTYPE')")
     public String usertypelist(Model model) throws JsonProcessingException {
         model.addAttribute("userTypeList", userTypeServices.getAllUserType());
         return "usertype/user_list";
     }
 
     @PostMapping("/createorupdate")
+    @PreAuthorize("hasAuthority('CREATE_USERTYPE')")
     public String createUserType(Model model, UserType userType){
         if (userType.getId() != null){
             UserType usrType = userTypeServices.getUserType(userType.getId());
@@ -54,6 +58,7 @@ public class UserTypeController {
     }
 
     @GetMapping("/update/{id}")
+    @PreAuthorize("hasAuthority('UPDATE_USERTYPE')")
     public String updateUserTypeForm(@PathVariable Long id, Model model){
         UserType userType = new UserType();
         userType = userTypeServices.getUserType(id);
@@ -64,6 +69,7 @@ public class UserTypeController {
     }
 
     @GetMapping("/delete/{id}")
+    @PreAuthorize("hasAuthority('DELETE_USERTYPE')")
     public String deleteUserType(@PathVariable Long id){
         userTypeServices.deleteUserType(id);
         return "redirect:/usertype/list";

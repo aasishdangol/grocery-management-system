@@ -40,22 +40,22 @@
         </select>
         <button>Add</button>
     </div>-->
-    <div class="mb-3 mt-3">
-        <label for="discount">Discount:</label>
-        <input type="number" class="form-control" id="discount" placeholder="Enter discount" name="discount" th:value="*{discount}">
-    </div>
-    <div class="mb-3 mt-3">
-<!--    <div class="container py-1">-->
-        <label >Product Items:</label>
+<!--    <div class="mb-3 mt-3">-->
+<!--        <label for="discount">Discount:</label>-->
+<!--        <input type="number" class="form-control" id="discount" placeholder="Enter discount" name="discount" th:value="*{discount}">-->
+<!--    </div>-->
+<!--    <div class="mb-3 mt-3">-->
+<!--&lt;!&ndash;    <div class="container py-1">&ndash;&gt;-->
+<!--        <label >Product Items:</label>-->
 <!--        <div class="row">-->
 <!--            <div class="col-lg-7 mx-auto">-->
 <!--                <div class="card rounded-0 border-0 shadow">-->
 <!--                    <div class="card-body p-5">-->
 
 
-                        <div class="table-responsive ">
-                            <table  class="table table-bordered">
-                                <thead>
+<!--                        <div class="table-responsive ">-->
+<!--                            <table  class="table table-bordered">-->
+<!--                                <thead>-->
                                <!-- <tr>
                                     <th scope="col">S.N</th>
                                     <th scope="col">product</th>
@@ -63,29 +63,29 @@
                                     <th scope="col">Quantity</th>
                                     <th scope="col">Action</th>
                                 </tr>-->
-                                </thead>
-                                <tbody>
-                                <tr>
+<!--                                </thead>-->
+<!--                                <tbody>-->
+<!--                                <tr>-->
 <!--                                    <th scrope="row" >1</th>-->
 <!--                                    <td><input class="form-control rounded-0" type="text" name="product" placeholder="Product"></td>-->
-                                    <td><select class="form-control rounded-0" id="price">
-                                        <option th:each="product: *{productList}" th:value="${product.id}" th:text="${product.name}">Products</option>
-                                    </select></td>
-                                    <td ><input class="form-control rounded-0"   type="number" name="price" placeholder="Price"></td>
-                                    <td ><input class="form-control rounded-0" type="number" name="quantity" placeholder="Quantity"></td>
-                                    <td ><input class="form-control rounded-0" type="number" name="total" placeholder="Total"></td>
-                                    <td><button class="btn btn-danger rounded-0" id ="deleteRow"><i class="fa fa-trash"></i></button></td>
-                                </tr>
-                                </tbody>
-                            </table>
-                            <a class="btn btn-primary rounded-0 btn-block" id="insertRow" href="#">Add new Product</a>
-                        </div>
+<!--                                    <td><select class="form-control rounded-0" id="price">-->
+<!--                                        <option th:each="product: *{productList}" th:value="${product.id}" th:text="${product.name}">Products</option>-->
+<!--                                    </select></td>-->
+<!--                                    <td ><input class="form-control rounded-0"   type="number" name="price" placeholder="Price"></td>-->
+<!--                                    <td ><input class="form-control rounded-0" type="number" name="quantity" placeholder="Quantity"></td>-->
+<!--                                    <td ><input class="form-control rounded-0" type="number" name="total" placeholder="Total"></td>-->
+<!--                                    <td><button class="btn btn-danger rounded-0" id ="deleteRow"><i class="fa fa-trash"></i></button></td>-->
+<!--                                </tr>-->
+<!--                                </tbody>-->
+<!--                            </table>-->
+<!--                            <a class="btn btn-primary rounded-0 btn-block" id="insertRow" href="#">Add new Product</a>-->
+<!--                        </div>-->
 
                         <!-- Add rows button-->
-=======
-                      </select>
-                      <button>Add</button>
-                  </div>-->
+
+
+
+
                 <div class="mb-3 mt-3">
                     <label for="discount">Discount:</label>
                     <input type="number" class="form-control" id="discount" placeholder="Enter discount" name="discount"
@@ -176,6 +176,7 @@
 
 
 }
+
 
 </script>
 </body>

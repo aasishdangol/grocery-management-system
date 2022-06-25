@@ -8,6 +8,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -26,6 +27,7 @@ public class CategoriesController {
     ObjectMapper objectMapper;
 
     @GetMapping("/create")
+    @PreAuthorize("hasAuthority('GET_CATEGORY')")
     public String categoryAddForm(Model model){
         Category category = new Category();
         model.addAttribute("categoryTitle",  "Category Update");
@@ -34,12 +36,14 @@ public class CategoriesController {
     }
 
     @GetMapping("/list")
+    @PreAuthorize("hasAuthority('LIST_CATEGORY')")
     public String categorylist(Model model) throws JsonProcessingException {
         model.addAttribute("categoryList", categoryServices.getAllCategory());
         return "category/cate_list";
     }
 
     @PostMapping("/createorupdate")
+    @PreAuthorize("hasAuthority('CREATE_CATEGORY')")
     public String createCategory(Model model, Category category){
         if (category.getId() != null){
             Category cate= categoryServices.getCategory(category.getId());
@@ -61,6 +65,7 @@ public class CategoriesController {
 
 
     @GetMapping("/update/{id}")
+    @PreAuthorize("hasAuthority('UPDATE_CATEGORY')")
     public String updateCategoryForm(@PathVariable Long id, Model model){
         Category category = new Category();
         category = categoryServices.getCategory(id);
@@ -70,6 +75,7 @@ public class CategoriesController {
     }
 
     @GetMapping("/delete/{id}")
+    @PreAuthorize("hasAuthority('DELETE_CATEGORY')")
     public String deleteCategory(@PathVariable Long id) {
         categoryServices.deleteCategory(id);
         return "redirect:/category/list";
