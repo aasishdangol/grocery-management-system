@@ -4,7 +4,7 @@ import java.util.Random;
 public class ConstantValue {
 
     private static final String CATE_ID= "CATE";
-    private static final String PROD_ID= "PROD";
+    private static final String PROD_ID= ("PROD");
     private static final String USER_ID= "USER";
     private static final String USE_ID= "UT";
     private static final String SALE_ID ="SALE";

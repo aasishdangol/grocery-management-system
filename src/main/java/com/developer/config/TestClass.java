@@ -34,13 +34,13 @@ public class TestClass {
         List<SalesDetails> salesDetailsList = new ArrayList<>();
 
         List<Product> productList = productServices.getAllProduct();
-        Sales sales = salesServices.getSales((long) 40);
+        Sales sales = salesServices.getSales((long) 51);
         productList.forEach(product -> {
 
             SalesDetails salesDetails = new SalesDetails();
             salesDetails.setProduct(product);
             salesDetails.setSales(sales);
-            salesDetails.setQuantity("10");
+            salesDetails.setQuantity("20");
             salesDetails.setAmount(product.getPrice());
 
             salesDetailsList.add(salesDetails);
