@@ -31,9 +31,9 @@ public class RoleController {
 
     @GetMapping("/create")
     @PreAuthorize("hasAuthority('GET_ROLE')")
-    public String RoleAddForm(Model model){
+    public String RoleAddForm(Model model) {
         Role role = new Role();
-        model.addAttribute("userRoleTitle",  "Role Add");
+        model.addAttribute("userRoleTitle", "Role Add");
         model.addAttribute("role", role);
         return "role/role_addupdateform";
     }
@@ -47,12 +47,11 @@ public class RoleController {
 
     @PostMapping("/createorupdate")
     @PreAuthorize("hasAuthority('CREATE_ROLE')")
-
-    public String createRole(Model model, Role role){
-        if (role.getId() != null){
+    public String createRole(Model model, Role role) {
+        if (role.getId() != null) {
             roleServices.updateRole(role, role.getId());
 
-        }else {
+        } else {
             roleServices.addRole(role);
         }
 
@@ -62,11 +61,11 @@ public class RoleController {
 
     @GetMapping("/update/{id}")
     @PreAuthorize("hasAuthority('UPDATE_ROLE')")
-    public String updateRoleForm(@PathVariable Long id, Model model){
+    public String updateRoleForm(@PathVariable Long id, Model model) {
         Role role = new Role();
         role = roleServices.getRole(id);
         model.addAttribute("role", role);
-        model.addAttribute("userRoleTitle",  "Role Update");
+        model.addAttribute("userRoleTitle", "Role Update");
         return "role/role_addupdateform";
     }
 

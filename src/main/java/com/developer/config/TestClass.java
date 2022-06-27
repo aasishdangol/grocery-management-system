@@ -29,12 +29,12 @@ public class TestClass {
     @Autowired
     SalesDetailsServices salesDetailsServices;
 
-    @PostConstruct
+//    @PostConstruct
     public void test(){
         List<SalesDetails> salesDetailsList = new ArrayList<>();
 
-        /*List<Product> productList = productServices.getAllProduct();
-        Sales sales = salesServices.getSales((long) 35);
+        List<Product> productList = productServices.getAllProduct();
+        Sales sales = salesServices.getSales((long) 40);
         productList.forEach(product -> {
 
             SalesDetails salesDetails = new SalesDetails();
@@ -47,7 +47,7 @@ public class TestClass {
         });
 
 
-        salesDetailsServices.saveSalesDetailsList(salesDetailsList);*/
+        salesDetailsServices.saveSalesDetailsList(salesDetailsList);
 
 //        List<SalesDetails> salesDetails = salesDetailsServices.getSalesDetailsList((long) 35);
 //        Sales sales = salesServices.getSales((long) 35);

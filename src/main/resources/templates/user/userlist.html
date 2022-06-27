@@ -8,6 +8,8 @@
         <div th:replace="fragment/sidenav::sidenav"></div>
         <div class="col py-3 ">
 
+<!--            <div th:replace="fragment/toastmessage::toastmsg"></div>-->
+
     <h2>User Table</h2>
     <table class="table table-bordered table-secondary">
         <thead>
@@ -18,7 +20,6 @@
             <th>Gender</th>
             <th>Email</th>
             <th>Address</th>
-            <th>Password</th>
             <th>Status</th>
             <th>Action</th>
 
@@ -32,7 +33,6 @@
             <td th:text="${usr.gender}">Doe</td>
             <td th:text="${usr.email}">john@example.com</td>
             <td th:text="${usr.address}">khokana</td>
-            <td th:text="${usr.password}"></td>
             <td th:text="${usr.status}"></td>
             <td>
                 <div class="btn-group">

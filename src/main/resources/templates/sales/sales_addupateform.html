@@ -27,63 +27,6 @@
                         </option>
                     </select>
                 </div>
-                <!--  <div class="dropdown mb-3 mt-3">
-                      <label for="productList">Products: </label>
-                      <select class="form-control" id="productList" name="productList"
-                              type="text"  th:value="*{productList}">
-                          <option th:each="product: *{productList}"
-                                  th:value="${product.id}"
-                                  th:text="${product.name}">
-                          </option>
-
-<<<<<<< HEAD
-        </select>
-        <button>Add</button>
-    </div>-->
-<!--    <div class="mb-3 mt-3">-->
-<!--        <label for="discount">Discount:</label>-->
-<!--        <input type="number" class="form-control" id="discount" placeholder="Enter discount" name="discount" th:value="*{discount}">-->
-<!--    </div>-->
-<!--    <div class="mb-3 mt-3">-->
-<!--&lt;!&ndash;    <div class="container py-1">&ndash;&gt;-->
-<!--        <label >Product Items:</label>-->
-<!--        <div class="row">-->
-<!--            <div class="col-lg-7 mx-auto">-->
-<!--                <div class="card rounded-0 border-0 shadow">-->
-<!--                    <div class="card-body p-5">-->
-
-
-<!--                        <div class="table-responsive ">-->
-<!--                            <table  class="table table-bordered">-->
-<!--                                <thead>-->
-                               <!-- <tr>
-                                    <th scope="col">S.N</th>
-                                    <th scope="col">product</th>
-                                    <th scope="col">price</th>
-                                    <th scope="col">Quantity</th>
-                                    <th scope="col">Action</th>
-                                </tr>-->
-<!--                                </thead>-->
-<!--                                <tbody>-->
-<!--                                <tr>-->
-<!--                                    <th scrope="row" >1</th>-->
-<!--                                    <td><input class="form-control rounded-0" type="text" name="product" placeholder="Product"></td>-->
-<!--                                    <td><select class="form-control rounded-0" id="price">-->
-<!--                                        <option th:each="product: *{productList}" th:value="${product.id}" th:text="${product.name}">Products</option>-->
-<!--                                    </select></td>-->
-<!--                                    <td ><input class="form-control rounded-0"   type="number" name="price" placeholder="Price"></td>-->
-<!--                                    <td ><input class="form-control rounded-0" type="number" name="quantity" placeholder="Quantity"></td>-->
-<!--                                    <td ><input class="form-control rounded-0" type="number" name="total" placeholder="Total"></td>-->
-<!--                                    <td><button class="btn btn-danger rounded-0" id ="deleteRow"><i class="fa fa-trash"></i></button></td>-->
-<!--                                </tr>-->
-<!--                                </tbody>-->
-<!--                            </table>-->
-<!--                            <a class="btn btn-primary rounded-0 btn-block" id="insertRow" href="#">Add new Product</a>-->
-<!--                        </div>-->
-
-                        <!-- Add rows button-->
-
-
 
 
                 <div class="mb-3 mt-3">
@@ -92,30 +35,32 @@
                            th:value="*{discount}">
                 </div>
                 <div class="mb-3 mt-3">
-                   
+
                     <label>Product Items:</label>
-<!--&gt;>>>>>> 6129707bec78be54a6b787a603f18918020c49ef-->
 
                     <div class="table-responsive table-bordered">
                         <table id="productTable" class="table">
                             <tbody>
                             <tr id="tableRow1">
                                 <!--                                    <td><input class="form-control rounded-0" type="text" name="product" placeholder="Product"></td>-->
-                                <td><select id="mySelect1" name="mySelect1" onchange="myFunction()" class="form-control rounded-0"
-                                            th:name="|sales.productList[0].name|">
-                                    <option class="form-control">-- Product  -----------------------</option>
+                                <td><select id="mySelect1" name="mySelect1" onchange="myFunction()"
+                                            class="form-control rounded-0"
+                                            th:name="|productDtoList[0].id|">
+                                    <option class="form-control">-- Product -----------------------</option>
                                     <option th:each="product: *{productList}"
                                             th:value="${product.id}"
-                                            th:text="${product.name}">Products
+                                            th:text="${product.name}"
+                                            th:name="|productDtoList[0].name|"
+                                    >Products
                                     </option>
                                 </select></td>
                                 <td><input class="form-control rounded-0" type="number" id="price1" name="price1"
-                                           placeholder="Price" disabled></td>
-                                <td><input class="form-control rounded-0" type="number" id="quantity1" name="quantity1"
+                                           placeholder="Price" th:name="|productDtoList[0].sellingPrice|" readonly></td>
+                                <td><input class="form-control rounded-0" type="number" id="quantity1" name="quantity1" th:name="|productDtoList[0].quantity|"
                                            placeholder="Quantity"></td>
                                 <td>
-                                    <input class="form-control rounded-0" type="number"  id="total1" name="total1"
-                                           placeholder="Total" disabled></td>
+                                    <input class="form-control rounded-0" type="number" id="total1" name="total1"
+                                           placeholder="Total" th:name="|productDtoList[0].amount|" readonly></td>
                                 <td>
                                     <button class="btn btn-danger rounded-0" id="deleteRow"><i class="fa fa-trash"></i>
                                     </button>
@@ -148,8 +93,10 @@
         var price1 = document.getElementById('price1').value;
         var quantity1 = document.getElementById('quantity1').value;
         var result = quantity1 * price1;
+        console.log(result)
+        $('#total1').val(result);
 
-        document.querySelector('input[name="total1"]').value = result;
+<!--        document.querySelector('input[name="total1"]').value = result;-->
         });
 
     function myFunction() {
@@ -169,14 +116,13 @@
     .then(response => {
     return response.json();
     }).then(product => {
-        $('#price1').val(product.price);
+        $('#price1').val(product.sellingPrice);
     console.log(product);
     console.log(product.name);
     })
 
 
 }
-
 
 </script>
 </body>

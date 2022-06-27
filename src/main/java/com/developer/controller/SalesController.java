@@ -1,8 +1,11 @@
 package com.developer.controller;
 
+import com.developer.dao.ProductDto;
 import com.developer.entity.Product;
 import com.developer.entity.Sales;
+import com.developer.entity.SalesDetails;
 import com.developer.service.ProductServices;
+import com.developer.service.SalesDetailsServices;
 import com.developer.service.SalesServices;
 import com.developer.util.ConstantValue;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -30,6 +33,9 @@ public class SalesController {
     private SalesServices salesServices;
 
     @Autowired
+    SalesDetailsServices salesDetailsServices;
+
+    @Autowired
     private ProductServices productServices;
     private static final Logger LOGGER = LoggerFactory.getLogger(SalesController.class);
 
@@ -40,11 +46,11 @@ public class SalesController {
     @PreAuthorize("hasAuthority('GET_SALES')")
     public String salesAddForm(Model model){
         List<Product> productList = productServices.getAllProduct();
-        List<Product> productEmptyList = new ArrayList<>();
+        List<ProductDto> productDtoList = new ArrayList<>();
         Sales sales = new Sales();
         sales.setProductList(productList);
+        sales.setProductDtoList(productDtoList);
         model.addAttribute("salesTitle",  "Sales Add");
-        model.addAttribute("productEmptyList",  productEmptyList);
         model.addAttribute("sales", sales);
         return "sales/sales_addupateform";
     }
@@ -68,7 +74,26 @@ public class SalesController {
         }else {
             sales.setSalesCode(ConstantValue.generateSalesId());
             sales.setDate(LocalDateTime.now().toString());
-            salesServices.addSales(sales);
+            Sales sales1 = salesServices.addSales(sales);
+
+            List<SalesDetails> salesDetailsList = new ArrayList<>();
+
+            sales.getProductDtoList().stream()
+                    .filter(productDto -> productDto.getId() != null)
+                    .forEach(productDto -> {
+                                Product product = productServices.getProduct(productDto.getId());
+
+                                SalesDetails salesDetails = new SalesDetails();
+                                salesDetails.setProduct(product);
+                                salesDetails.setSales(sales1);
+                                salesDetails.setAmount(product.getPrice());
+                                salesDetails.setQuantity(productDto.getQuantity());
+
+                                salesDetailsList.add(salesDetails);
+                            });
+            salesDetailsServices.saveSalesDetailsList(salesDetailsList);
+
+
         }
         return "redirect:/sales/list";
     }
