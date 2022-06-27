@@ -50,7 +50,7 @@ public class Product implements Serializable {
   @JoinColumn(name = "product_id"))
   private Set<Sales> salesDetail = new HashSet<>();*/
 
-  @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+  @OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
   private Set<SalesDetails> salesDetails;
 
 
