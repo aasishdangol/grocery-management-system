@@ -1,5 +1,6 @@
 package com.developer.entity;
 
+import com.developer.dao.ProductDto;
 import com.developer.util.ConstantValue;
 import lombok.Getter;
 import lombok.Setter;
@@ -35,7 +36,7 @@ public class Sales implements Serializable {
         @Column(name="discount")
         private String discount;
 
-        @OneToMany(mappedBy = "sales")
+        @OneToMany(mappedBy = "sales",cascade = CascadeType.ALL)
         private Set<SalesDetails> salesDetails;
 
 
@@ -47,6 +48,9 @@ public class Sales implements Serializable {
 
         @Transient
         private List<Product> productList = new ArrayList<>();
+
+        @Transient
+        private List<ProductDto> productDtoList = new ArrayList<>();
 
 
 }
