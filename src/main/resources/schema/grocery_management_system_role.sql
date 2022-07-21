@@ -28,7 +28,7 @@ CREATE TABLE `role` (
   `name` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UK8sewwnpamngi6b1dwaa88askk` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -37,7 +37,7 @@ CREATE TABLE `role` (
 
 LOCK TABLES `role` WRITE;
 /*!40000 ALTER TABLE `role` DISABLE KEYS */;
-INSERT INTO `role` VALUES (1,'create users','ADD_USER'),(2,'For user update','USER_UPDATE');
+INSERT INTO `role` VALUES (1,'create users','GET_USER'),(2,'For user update','LIST_USER'),(3,'create the user form','CREATE_USER'),(4,'update user list','UPDATE_USER'),(5,'delete user from user list','DELETE_USER'),(6,'category add','GET_CATEGORY'),(7,'list of category','LIST_CATEGORY'),(8,'category form create','CREATE_CATEGORY'),(9,'category update','UPDATE_CATEGORY'),(10,'delete category ','DELETE_CATEGORY'),(11,'for view the profile','PROFILE_VIEW'),(12,'for view the bill','BILL_VIEW'),(13,'for product add','GET_PRODUCT'),(14,'list of products','LIST_PRODUCT'),(15,'create product','CREATE_PRODUCT'),(16,'update product','UPDATE_PRODUCT'),(17,'delete product','DELETE_PRODUCT'),(18,'add role','GET_ROLE'),(19,'list of role','LIST_ROLE'),(20,'role create','CREATE_ROLE'),(21,'role list update','UPDATE_ROLE'),(22,'delete role','DELETE_ROLE'),(23,'list of sales','LIST_SALES'),(24,'add sales','GET_SALES'),(25,'create sales','CREATE_SALES'),(26,'update sales','UPDATE_SALES'),(27,'delete sales','DELETE_SALES'),(28,'usertype add','GET_USERTYPE'),(29,'usertype list','LIST_USERTYPE'),(30,'usertype form create','CREATE_USERTYPE'),(31,'update usertype','UPDATE_USERTYPE'),(32,'delete usertype','DELETE_USERTYPE');
 /*!40000 ALTER TABLE `role` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -50,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-06-24  1:54:38
+-- Dump completed on 2022-07-21 19:34:11

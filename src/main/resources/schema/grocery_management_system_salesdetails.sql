@@ -42,7 +42,7 @@ CREATE TABLE `salesdetails` (
 
 LOCK TABLES `salesdetails` WRITE;
 /*!40000 ALTER TABLE `salesdetails` DISABLE KEYS */;
-INSERT INTO `salesdetails` VALUES (37,'40','10',32,35),(38,'50','10',33,35),(39,'50','10',34,35);
+INSERT INTO `salesdetails` VALUES (57,'50','10',33,56);
 /*!40000 ALTER TABLE `salesdetails` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -55,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-06-24  1:54:37
+-- Dump completed on 2022-07-21 19:34:10
