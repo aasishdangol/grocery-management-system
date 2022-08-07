@@ -36,6 +36,7 @@ public class Sales implements Serializable {
         @Column(name="discount")
         private String discount;
 
+
         @OneToMany(mappedBy = "sales",cascade = CascadeType.ALL)
         private Set<SalesDetails> salesDetails;
 

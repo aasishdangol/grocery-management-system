@@ -73,7 +73,10 @@ public class SalesDetailsController {
 
             Integer subTotal = Integer.parseInt(salesDetailsDao.getSubTotal());
             Integer discount = Integer.parseInt(salesDetailsDao.getDiscount());
-            Integer grandTotal = subTotal - discount;
+//            Integer Vat = Integer.parseInt(salesDetailsDao.getVat());
+            Integer Vat = subTotal*15/100;
+            salesDetailsDao.setGrandTotal(Integer.toString(Vat));
+            Integer grandTotal = subTotal - discount + Vat;
             salesDetailsDao.setGrandTotal(Integer.toString(grandTotal));
             salesDetailsDao.setProduct(productDtoList);
         }
