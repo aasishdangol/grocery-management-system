@@ -40,7 +40,7 @@ public class TestClass {
             SalesDetails salesDetails = new SalesDetails();
             salesDetails.setProduct(product);
             salesDetails.setSales(sales);
-            salesDetails.setQuantity("20");
+            salesDetails.setQuantity(20);
             salesDetails.setAmount(product.getPrice());
 
             salesDetailsList.add(salesDetails);

@@ -28,10 +28,10 @@ public class Product implements Serializable {
   private String name;
 
   @Column(name="quantity")
-  private String quantity;
+  private Integer quantity;
 
   @Column(name="price")
-  private String price;
+  private Integer price;
 
   @Column(name = "description")
   private String description;

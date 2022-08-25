@@ -34,7 +34,7 @@ public class Sales implements Serializable {
         private String paymentBy;
 
         @Column(name="discount")
-        private String discount;
+        private Integer discount;
 
 
         @OneToMany(mappedBy = "sales",cascade = CascadeType.ALL)

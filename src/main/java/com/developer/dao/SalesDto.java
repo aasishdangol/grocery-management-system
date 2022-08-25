@@ -11,6 +11,6 @@ public class SalesDto {
     private String salesCode;
     private String date;
     private String paymentBy;
-    private String discount;
+    private Integer discount;
 
 }

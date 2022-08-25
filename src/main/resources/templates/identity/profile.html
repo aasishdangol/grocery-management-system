@@ -8,6 +8,37 @@
             width:200px;
             height:200px;
         }
+        body {
+            background-color: blue;
+            font-family: 'Calibri', sans-serif !important;
+        }
+
+        .form-control:focus {
+            box-shadow: none;
+            border-color: #BA68C8;
+        }
+
+        .profile-button {
+            background: #BA68C8;
+            box-shadow: none;
+            border: none;
+        }
+
+        .profile-button:hover {
+            background: #682773;
+        }
+
+        .profile-button:focus {
+            background: #682773;
+            box-shadow: none;
+        }
+
+        .profile-button:active {
+            background: #682773;
+            box-shadow: none;
+        }
+
+
     </style>
 </head>
 <body>
@@ -37,30 +68,18 @@
 <!--                        </div>-->
                         <h3>Personal information</h3>
                         <form class="form-horizontal" role="form">
-                            <div class="form-group">
-                                <label class="col-lg-3 control-label">First name:</label>
-                                <div class="col-lg-8">
-                                    <input class="form-control" type="text" value="">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-lg-3 control-label">Last name:</label>
-                                <div class="col-lg-8">
-                                    <input class="form-control" type="text" value="bootdey">
-                                </div>
-                            <div class="form-group">
-                                <label class="col-lg-3 control-label">Email:</label>
-                                <div class="col-lg-8">
-                                    <input class="form-control" type="text" value="janesemail@gmail.com">
-                                </div>
-                            </div>
 
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <a class="btn btn-info " target="__blank" th:href="@{/identity/profile}">Edit</a>
-                                </div>
-                            </div>
-                            </div>
+                    <div class="row mt-2">
+                        <div class="col-md-6"><input type="text" class="form-control" placeholder="first name" value="John"></div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-6"><input type="text" class="form-control" placeholder="Email" value="john_doe12@bbb.com"></div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-6"><input type="text" class="form-control" placeholder="address" value="D-113, right avenue block, CA,USA"></div>
+                    </div>
+                    <div class="mt-5 text-center"><button class="btn btn-primary profile-button"th:href="@{/identity/profile}" type="button">Save Profile</button></div>
+
                         </form>
                         </div>
 

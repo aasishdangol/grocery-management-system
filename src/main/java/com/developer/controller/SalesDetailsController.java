@@ -55,29 +55,29 @@ public class SalesDetailsController {
                 productDto.setProductCode(product.getProductCode());
                 productDto.setName(product.getName());
                 productDto.setQuantity(salesDetails.getQuantity());
-                productDto.setSellingPrice(salesDetails.getAmount());
+                productDto.setSellingPrice (salesDetails.getAmount());
 
-                int qty= Integer.parseInt(salesDetails.getQuantity());
-                int sellingPrice = Integer.parseInt(salesDetails.getAmount());
+                int qty= (salesDetails.getQuantity());
+                int sellingPrice = (salesDetails.getAmount());
 
                 int total = qty * sellingPrice;
 
-                Integer subTotal = Integer.parseInt(salesDetailsDao.getSubTotal());
+                Integer subTotal = (salesDetailsDao.getSubTotal());
                 subTotal = subTotal + total;
-                salesDetailsDao.setSubTotal(Integer.toString(subTotal));
+                salesDetailsDao.setSubTotal((subTotal));
 
-                productDto.setAmount(Integer.toString(total));
+                productDto.setAmount ((total));
 
                 productDtoList.add(productDto);
             });
 
-            Integer subTotal = Integer.parseInt(salesDetailsDao.getSubTotal());
-            Integer discount = Integer.parseInt(salesDetailsDao.getDiscount());
+            Integer subTotal = (salesDetailsDao.getSubTotal());
+            Integer discount = (salesDetailsDao.getDiscount());
 //            Integer Vat = Integer.parseInt(salesDetailsDao.getVat());
             Integer Vat = subTotal*15/100;
-            salesDetailsDao.setGrandTotal(Integer.toString(Vat));
+            salesDetailsDao.setGrandTotal((Vat));
             Integer grandTotal = subTotal - discount + Vat;
-            salesDetailsDao.setGrandTotal(Integer.toString(grandTotal));
+            salesDetailsDao.setGrandTotal((grandTotal));
             salesDetailsDao.setProduct(productDtoList);
         }
 
