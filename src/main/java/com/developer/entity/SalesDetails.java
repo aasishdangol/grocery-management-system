@@ -27,7 +27,7 @@ public class SalesDetails implements Serializable {
     private Product product;
 
     @Column(name = "quantity")
-    private String  quantity;
+    private int  quantity;
 
     @Column(name="amount")
     private String amount;

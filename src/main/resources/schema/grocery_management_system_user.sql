@@ -45,7 +45,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (3,'Khokana, Lalitpur`','testtest@mailinator.com','test','male','Dangol','$2a$12$s.XIwQ8rm5X2MOUBpRyWR.YE3aFw/SmLxDRfekDbrV4OIZrz2/Pt6','Active','USER549696',1),(6,'khokana','sita@mailinator.com','Sita','female','Dangol','$2a$12$s.XIwQ8rm5X2MOUBpRyWR.YE3aFw/SmLxDRfekDbrV4OIZrz2/Pt6','Active','USER063084',2),(7,'khokana','ram@mailinator.com','Ram','male','Maharjan','$2a$12$s.XIwQ8rm5X2MOUBpRyWR.YE3aFw/SmLxDRfekDbrV4OIZrz2/Pt6','Active','USER295463',1),(8,'khokana','hero@mailinator.com','Hero','male','test','$2a$12$s.XIwQ8rm5X2MOUBpRyWR.YE3aFw/SmLxDRfekDbrV4OIZrz2/Pt6','Active','USER414939',2),(18,'fasd','test@mailinator.com','fasdf','male','fasd','$2a$12$s.XIwQ8rm5X2MOUBpRyWR.YE3aFw/SmLxDRfekDbrV4OIZrz2/Pt6','Active','USER093626',1);
+INSERT INTO `user` VALUES (47,'khokana, lalitpur','testuser1@mailinatorl.com','test1','male','Maharjan','$12$xerSbxa9b8Nzk1X3SJWw2.wqBStI03JqOR3cKK12JciL/8g8j7L3u','Active','USER126767',46),(48,'khokana, lalitpur','test@gmail.com','test2','male','Dangol','$12$xerSbxa9b8Nzk1X3SJWw2.wqBStI03JqOR3cKK12JciL/8g8j7L3u','Active','USER045160',1),(56,'patan','testuser3@gmail.com','test3','female','Shakya','$2a$12$xerSbxa9b8Nzk1X3SJWw2.wqBStI03JqOR3cKK12JciL/8g8j7L3u','Active','USER289036',1),(58,'khokana','Avi@gmail.com','test4','male','Dangol','$12$xerSbxa9b8Nzk1X3SJWw2.wqBStI03JqOR3cKK12JciL/8g8j7L3u','Active','USER140499',46),(64,'khokana','ranjit@gmail.com','ranjit','male','maharjan','$12$xerSbxa9b8Nzk1X3SJWw2.wqBStI03JqOR3cKK12JciL/8g8j7L3u','Active','USER018103',63);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -58,4 +58,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-06-24  1:54:38
+-- Dump completed on 2022-07-21 19:34:11

@@ -37,7 +37,7 @@ CREATE TABLE `user_type` (
 
 LOCK TABLES `user_type` WRITE;
 /*!40000 ALTER TABLE `user_type` DISABLE KEYS */;
-INSERT INTO `user_type` VALUES (1,'super admins','ADMIN','UT570501'),(2,'All employees','EMPLOYEE','UT886336');
+INSERT INTO `user_type` VALUES (1,'super admins','ADMIN','UT570501'),(46,'ALL Seller ','SELLER','UT511889'),(63,'test description','Employee','UT214548');
 /*!40000 ALTER TABLE `user_type` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -50,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-06-24  1:54:37
+-- Dump completed on 2022-07-21 19:34:10
