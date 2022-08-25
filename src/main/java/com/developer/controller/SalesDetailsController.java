@@ -57,7 +57,7 @@ public class SalesDetailsController {
                 productDto.setQuantity(salesDetails.getQuantity());
                 productDto.setSellingPrice(salesDetails.getAmount());
 
-                int qty= Integer.parseInt(salesDetails.getQuantity());
+                int qty= salesDetails.getQuantity();
                 int sellingPrice = Integer.parseInt(salesDetails.getAmount());
 
                 int total = qty * sellingPrice;

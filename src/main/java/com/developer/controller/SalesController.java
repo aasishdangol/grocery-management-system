@@ -90,6 +90,12 @@ public class SalesController {
                                 salesDetails.setQuantity(productDto.getQuantity());
 
                                 salesDetailsList.add(salesDetails);
+                                if (productDto.getQuantity() > product.getQuantity()){
+                                    System.out.println("Out of stock");
+                                }else {
+                                    product.setQuantity(product.getQuantity() - productDto.getQuantity());
+                                    productServices.updateProduct(product,productDto.getId());
+                                }
                             });
             salesDetailsServices.saveSalesDetailsList(salesDetailsList);
 
