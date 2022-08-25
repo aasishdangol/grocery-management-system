@@ -13,12 +13,12 @@ public class IdentityController {
 
     @GetMapping(value = "/dashboard")
     public String dashboard(Model model) {
-        return "/dashboard";
+        return "dashboard";
     }
 
     @GetMapping(value = "/404page")
     public String accessDeniedPage(){
-        return "/404page";
+        return "404page";
     }
 
     @GetMapping(value = "/login")
@@ -35,7 +35,7 @@ public class IdentityController {
     }
     @GetMapping(value = "/index")
     public String indexPage(Model model) {
-        return "/index";
+        return "index";
     }
 
 //    @GetMapping(value = "/bill")

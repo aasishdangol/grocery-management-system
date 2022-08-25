@@ -41,26 +41,50 @@
                     <div class="table-responsive table-bordered">
                         <table id="productTable" class="table">
                             <tbody>
-                            <tr id="tableRow1">
+                            <tr id="tableRow0">
                                 <!--                                    <td><input class="form-control rounded-0" type="text" name="product" placeholder="Product"></td>-->
-                                <td><select id="mySelect1" name="mySelect1" onchange="myFunction()"
+                                <td><select id="mySelect0" name="mySelect0" onchange="myFunction()"
                                             class="form-control rounded-0"
                                             th:name="|productDtoList[0].id|">
                                     <option class="form-control">-- Product -----------------------</option>
                                     <option th:each="product: *{productList}"
                                             th:value="${product.id}"
                                             th:text="${product.name}"
-                                            th:name="|productDtoList[0].name|"
-                                    >Products
+                                            th:name="|productDtoList[0].name|">Products
+                                    </option>
+                                </select></td>
+                                <td><input class="form-control rounded-0" type="number" id="price0" name="price0"
+                                           placeholder="Price" th:name="|productDtoList[0].sellingPrice|" readonly></td>
+                                <td><input class="form-control rounded-0" type="number" id="quantity0" name="quantity0" th:name="|productDtoList[0].quantity|"
+                                           placeholder="Quantity"></td>
+                                <td>
+                                    <input class="form-control rounded-0" type="number" id="total0" name="total0"
+                                           placeholder="Total" th:name="|productDtoList[0].amount|" readonly></td>
+                                <td>
+                                    <button class="btn btn-danger rounded-0" id="deleteRow"><i class="fa fa-trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <tr id="tableRow1">
+                                <!--                                    <td><input class="form-control rounded-0" type="text" name="product" placeholder="Product"></td>-->
+                                <td><select id="mySelect1" name="mySelect1" onchange="myFunction()"
+                                            class="form-control rounded-0"
+                                            th:name="|productDtoList[1].id|">
+                                    <option class="form-control">-- Product -----------------------</option>
+                                    <option th:each="product: *{productList}"
+                                            th:value="${product.id}"
+                                            th:text="${product.name}"
+                                            th:name="|productDtoList[1].name|">Products
                                     </option>
                                 </select></td>
                                 <td><input class="form-control rounded-0" type="number" id="price1" name="price1"
-                                           placeholder="Price" th:name="|productDtoList[0].sellingPrice|" readonly></td>
-                                <td><input class="form-control rounded-0" type="number" id="quantity1" name="quantity1" th:name="|productDtoList[0].quantity|"
+                                           placeholder="Price" th:name="|productDtoList[1].sellingPrice|" readonly></td>
+                                <td><input class="form-control rounded-0" type="number" id="quantity1" name="quantity1" th:name="|productDtoList[1].quantity|"
                                            placeholder="Quantity"></td>
                                 <td>
                                     <input class="form-control rounded-0" type="number" id="total1" name="total1"
-                                           placeholder="Total" th:name="|productDtoList[0].amount|" readonly></td>
+                                           placeholder="Total" th:name="|productDtoList[1].amount|" readonly></td>
                                 <td>
                                     <button class="btn btn-danger rounded-0" id="deleteRow"><i class="fa fa-trash"></i>
                                     </button>
@@ -86,28 +110,30 @@
 <footer th:replace="fragment/footer::footer"></footer>
 <script th:inline="javascript">
 
-        const quantity1 = document.querySelector('#quantity1');
 
-        quantity1.addEventListener('input', function () {
 
-        var price1 = document.getElementById('price1').value;
-        var quantity1 = document.getElementById('quantity1').value;
-        var result = quantity1 * price1;
+        const quantity0 = document.querySelector('#quantity0');
+
+        quantity0.addEventListener('input', function () {
+
+        var price0 = document.getElementById('price0').value;
+        var quantity0 = document.getElementById('quantity0').value;
+        var result = quantity0 * price0;
         console.log(result)
-        $('#total1').val(result);
+        $('#total0').val(result);
 
-<!--        document.querySelector('input[name="total1"]').value = result;-->
+<!--        document.querySelector('input[name="total0"]').value = result;-->
         });
 
     function myFunction() {
 
-    var id = $(this).closest('tr').find('input[name="price1"]').val();
+    var id = $(this).closest('tr').find('input[name="price0"]').val();
     console.log(id)
 
     var num = "'foofo21".match(/\d+/g);
     console.log(num[0])
 
-    var prodId = document.getElementById("mySelect1").value;
+    var prodId = document.getElementById("mySelect0").value;
     console.log("you select:" +prodId);
     var href ='http://' +window.location.host +"/product/"+prodId;
 
@@ -116,7 +142,7 @@
     .then(response => {
     return response.json();
     }).then(product => {
-        $('#price1').val(product.sellingPrice);
+        $('#price0').val(product.sellingPrice);
     console.log(product);
     console.log(product.name);
     })
